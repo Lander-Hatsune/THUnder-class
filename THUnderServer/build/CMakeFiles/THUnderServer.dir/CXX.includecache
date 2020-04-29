@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/dboperator.cpp
+dboperator.h
+D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/dboperator.h
+cstdio
+-
+cstring
+-
+cstdlib
+-
+
+D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/dboperator.h
+string
+-
+./sqlite/sqlite3.h
+D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/sqlite/sqlite3.h
+
+D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/sqlite/sqlite3.h
+stdarg.h
+-
+

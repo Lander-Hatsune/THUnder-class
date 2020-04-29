@@ -4,3 +4,47 @@
 
 * preparation
 - <2020-04-21 周二> install Qt.
+- <2020-04-29 周三> sqlite & c++, sql server
+* GUI-Qt
+** Notebook
+*** signal-slot
+- signal :: the message sent
+- slot :: the function called with respect to the signal.
+- =connect= ::
+  #+begin_src cpp
+  QObject::connect(sender, SIGNAL(signal()), receiver, SLOT(slot()));
+  #+end_src
+- one =SIGNAL= can be connected to multiple =SLOT= s\\
+  multiple =SIGNAL= s can be connected to one =SLOT=
+- =SIGNAL= can connect to =SIGNAL=
+*** project files
+- MainWindow.h :: 定义窗口的头文件
+- MainWindow.cpp :: 功能实现
+  #+begin_src cpp
+  #include "ui_MainWindow.h"
+  #+end_src
+
+- MainWindow.ui :: 窗体界面文件，包括各个组件的属性和布局
+- ui_MainWindow.h :: 根据组件及其属性、信号与槽的关联，在 *编译* 时自动生成的类定义，
+  类名为 =Ui_MainWindow=
+
+*** attention
+- 在 =MainWindow= 类中访问其成员变量、函数时要借由指针 =ui= ，如
+  #+begin_src cpp
+  ui->setupUi(this);
+  #+end_src
+
+*** button
+- to check a button's event: check its =!checked= signal.
+
+** extra: flatten design
+https://gitee.com/feiyangqingyun/QWidgetDemo.git
+* sqlite
+
+* problem shooting
+** connecting =SIGNAL(pressed())= and =SLOT=, in slot check =isDown()=
+guess: =SIGNAL= is deleted once activated and passed, so the =isChecked= cannot 
+catch the "press" process and cannot judge true.
+
+* TODO TodoList
+** 第三范式

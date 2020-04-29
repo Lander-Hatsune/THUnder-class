@@ -4,7 +4,7 @@
 
 * preparation
 - <2020-04-21 周二> install Qt.
-
+- <2020-04-29 周三> sqlite & c++, sql server
 * GUI-Qt
 ** Notebook
 *** signal-slot
@@ -12,8 +12,11 @@
 - slot :: the function called with respect to the signal.
 - =connect= ::
   #+begin_src cpp
-  QObject::connect(btnClose, SIGNAL(clicked()), Widget, SLOT(close()));
+  QObject::connect(sender, SIGNAL(signal()), receiver, SLOT(slot()));
   #+end_src
+- one =SIGNAL= can be connected to multiple =SLOT= s\\
+  multiple =SIGNAL= s can be connected to one =SLOT=
+- =SIGNAL= can connect to =SIGNAL=
 *** project files
 - MainWindow.h :: 定义窗口的头文件
 - MainWindow.cpp :: 功能实现
@@ -33,3 +36,17 @@
 
 *** button
 - to check a button's event: check its =!checked= signal.
+
+** extra: flatten design
+https://gitee.com/feiyangqingyun/QWidgetDemo.git
+* sqlite
+
+* problem shooting
+** connecting =SIGNAL(pressed())= and =SLOT=, in slot check =isDown()=
+guess: =SIGNAL= is deleted once activated and passed, so the =isChecked= cannot 
+catch the "press" process and cannot judge true.
+
+** constructors may not be cv-qualified
+constructors cannot be modified as =const=.
+* TODO TodoList
+** 第三范式
