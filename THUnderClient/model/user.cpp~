@@ -1,0 +1,7 @@
+#include "user.cpp"
+#include <string>
+using std::string;
+
+user::user(const string&, const string&) {
+    
+}

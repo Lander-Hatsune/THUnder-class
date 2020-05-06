@@ -5,9 +5,15 @@ CMakeFiles/THUnderServer.dir/sqlite/sqlite3.c.obj: ../sqlite/sqlite3.c
 
 CMakeFiles/THUnderServer.dir/dboperator.cpp.obj: ../dboperator.cpp
 CMakeFiles/THUnderServer.dir/dboperator.cpp.obj: ../dboperator.h
+CMakeFiles/THUnderServer.dir/dboperator.cpp.obj: ../definitions.h
 CMakeFiles/THUnderServer.dir/dboperator.cpp.obj: ../sqlite/sqlite3.h
 
 CMakeFiles/THUnderServer.dir/main.cpp.obj: ../dboperator.h
+CMakeFiles/THUnderServer.dir/main.cpp.obj: ../definitions.h
 CMakeFiles/THUnderServer.dir/main.cpp.obj: ../main.cpp
+CMakeFiles/THUnderServer.dir/main.cpp.obj: ../socket/Socket.h
 CMakeFiles/THUnderServer.dir/main.cpp.obj: ../sqlite/sqlite3.h
+
+CMakeFiles/THUnderServer.dir/socket/Socket.cpp.obj: ../socket/Socket.cpp
+CMakeFiles/THUnderServer.dir/socket/Socket.cpp.obj: ../socket/Socket.h
 

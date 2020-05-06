@@ -1,0 +1,18 @@
+#pragma once
+#include <string>
+#include "../definitions.h"
+#include "../model/user.h"
+using std::string;
+
+class loginop {
+private:
+    unsigned failtime;
+    
+public:
+    loginop();
+    ~loginop();
+    loginop(const loginop&) = delete;
+    loginop& operator = (const loginop&) = delete;
+    
+    void login(const string&, const string&);
+};

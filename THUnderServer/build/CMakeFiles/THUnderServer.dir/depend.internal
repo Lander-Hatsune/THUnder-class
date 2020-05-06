@@ -6,8 +6,14 @@ CMakeFiles/THUnderServer.dir/sqlite/sqlite3.c.obj
 CMakeFiles/THUnderServer.dir/dboperator.cpp.obj
  D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/dboperator.cpp
  D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/dboperator.h
+ D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/definitions.h
  D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/sqlite/sqlite3.h
 CMakeFiles/THUnderServer.dir/main.cpp.obj
  D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/dboperator.h
+ D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/definitions.h
  D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/main.cpp
+ D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/socket/Socket.h
  D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/sqlite/sqlite3.h
+CMakeFiles/THUnderServer.dir/socket/Socket.cpp.obj
+ D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/socket/Socket.cpp
+ D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/socket/Socket.h

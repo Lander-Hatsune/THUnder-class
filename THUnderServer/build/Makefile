@@ -176,6 +176,33 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles\THUnderServer.dir\build.make CMakeFiles/THUnderServer.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+socket/Socket.obj: socket/Socket.cpp.obj
+
+.PHONY : socket/Socket.obj
+
+# target to build an object file
+socket/Socket.cpp.obj:
+	$(MAKE) -f CMakeFiles\THUnderServer.dir\build.make CMakeFiles/THUnderServer.dir/socket/Socket.cpp.obj
+.PHONY : socket/Socket.cpp.obj
+
+socket/Socket.i: socket/Socket.cpp.i
+
+.PHONY : socket/Socket.i
+
+# target to preprocess a source file
+socket/Socket.cpp.i:
+	$(MAKE) -f CMakeFiles\THUnderServer.dir\build.make CMakeFiles/THUnderServer.dir/socket/Socket.cpp.i
+.PHONY : socket/Socket.cpp.i
+
+socket/Socket.s: socket/Socket.cpp.s
+
+.PHONY : socket/Socket.s
+
+# target to generate assembly for a file
+socket/Socket.cpp.s:
+	$(MAKE) -f CMakeFiles\THUnderServer.dir\build.make CMakeFiles/THUnderServer.dir/socket/Socket.cpp.s
+.PHONY : socket/Socket.cpp.s
+
 sqlite/sqlite3.obj: sqlite/sqlite3.c.obj
 
 .PHONY : sqlite/sqlite3.obj
@@ -218,6 +245,9 @@ help:
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
+	@echo ... socket/Socket.obj
+	@echo ... socket/Socket.i
+	@echo ... socket/Socket.s
 	@echo ... sqlite/sqlite3.obj
 	@echo ... sqlite/sqlite3.i
 	@echo ... sqlite/sqlite3.s

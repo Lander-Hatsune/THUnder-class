@@ -59,47 +59,61 @@ include CMakeFiles/THUnderServer.dir/flags.make
 CMakeFiles/THUnderServer.dir/main.cpp.obj: CMakeFiles/THUnderServer.dir/flags.make
 CMakeFiles/THUnderServer.dir/main.cpp.obj: ../main.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\THU\Lessons\1B\Cpp\THUnder\src\THUnderServer\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/THUnderServer.dir/main.cpp.obj"
-	C:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\THUnderServer.dir\main.cpp.obj -c D:\THU\Lessons\1B\Cpp\THUnder\src\THUnderServer\main.cpp
+	C:\mingw64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\THUnderServer.dir\main.cpp.obj -c D:\THU\Lessons\1B\Cpp\THUnder\src\THUnderServer\main.cpp
 
 CMakeFiles/THUnderServer.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/THUnderServer.dir/main.cpp.i"
-	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\THU\Lessons\1B\Cpp\THUnder\src\THUnderServer\main.cpp > CMakeFiles\THUnderServer.dir\main.cpp.i
+	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\THU\Lessons\1B\Cpp\THUnder\src\THUnderServer\main.cpp > CMakeFiles\THUnderServer.dir\main.cpp.i
 
 CMakeFiles/THUnderServer.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/THUnderServer.dir/main.cpp.s"
-	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\THU\Lessons\1B\Cpp\THUnder\src\THUnderServer\main.cpp -o CMakeFiles\THUnderServer.dir\main.cpp.s
+	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\THU\Lessons\1B\Cpp\THUnder\src\THUnderServer\main.cpp -o CMakeFiles\THUnderServer.dir\main.cpp.s
 
 CMakeFiles/THUnderServer.dir/dboperator.cpp.obj: CMakeFiles/THUnderServer.dir/flags.make
 CMakeFiles/THUnderServer.dir/dboperator.cpp.obj: ../dboperator.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\THU\Lessons\1B\Cpp\THUnder\src\THUnderServer\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/THUnderServer.dir/dboperator.cpp.obj"
-	C:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\THUnderServer.dir\dboperator.cpp.obj -c D:\THU\Lessons\1B\Cpp\THUnder\src\THUnderServer\dboperator.cpp
+	C:\mingw64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\THUnderServer.dir\dboperator.cpp.obj -c D:\THU\Lessons\1B\Cpp\THUnder\src\THUnderServer\dboperator.cpp
 
 CMakeFiles/THUnderServer.dir/dboperator.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/THUnderServer.dir/dboperator.cpp.i"
-	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\THU\Lessons\1B\Cpp\THUnder\src\THUnderServer\dboperator.cpp > CMakeFiles\THUnderServer.dir\dboperator.cpp.i
+	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\THU\Lessons\1B\Cpp\THUnder\src\THUnderServer\dboperator.cpp > CMakeFiles\THUnderServer.dir\dboperator.cpp.i
 
 CMakeFiles/THUnderServer.dir/dboperator.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/THUnderServer.dir/dboperator.cpp.s"
-	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\THU\Lessons\1B\Cpp\THUnder\src\THUnderServer\dboperator.cpp -o CMakeFiles\THUnderServer.dir\dboperator.cpp.s
+	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\THU\Lessons\1B\Cpp\THUnder\src\THUnderServer\dboperator.cpp -o CMakeFiles\THUnderServer.dir\dboperator.cpp.s
 
 CMakeFiles/THUnderServer.dir/sqlite/sqlite3.c.obj: CMakeFiles/THUnderServer.dir/flags.make
 CMakeFiles/THUnderServer.dir/sqlite/sqlite3.c.obj: ../sqlite/sqlite3.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\THU\Lessons\1B\Cpp\THUnder\src\THUnderServer\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/THUnderServer.dir/sqlite/sqlite3.c.obj"
-	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\THUnderServer.dir\sqlite\sqlite3.c.obj   -c D:\THU\Lessons\1B\Cpp\THUnder\src\THUnderServer\sqlite\sqlite3.c
+	C:\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\THUnderServer.dir\sqlite\sqlite3.c.obj   -c D:\THU\Lessons\1B\Cpp\THUnder\src\THUnderServer\sqlite\sqlite3.c
 
 CMakeFiles/THUnderServer.dir/sqlite/sqlite3.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/THUnderServer.dir/sqlite/sqlite3.c.i"
-	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E D:\THU\Lessons\1B\Cpp\THUnder\src\THUnderServer\sqlite\sqlite3.c > CMakeFiles\THUnderServer.dir\sqlite\sqlite3.c.i
+	C:\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E D:\THU\Lessons\1B\Cpp\THUnder\src\THUnderServer\sqlite\sqlite3.c > CMakeFiles\THUnderServer.dir\sqlite\sqlite3.c.i
 
 CMakeFiles/THUnderServer.dir/sqlite/sqlite3.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/THUnderServer.dir/sqlite/sqlite3.c.s"
-	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S D:\THU\Lessons\1B\Cpp\THUnder\src\THUnderServer\sqlite\sqlite3.c -o CMakeFiles\THUnderServer.dir\sqlite\sqlite3.c.s
+	C:\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S D:\THU\Lessons\1B\Cpp\THUnder\src\THUnderServer\sqlite\sqlite3.c -o CMakeFiles\THUnderServer.dir\sqlite\sqlite3.c.s
+
+CMakeFiles/THUnderServer.dir/socket/Socket.cpp.obj: CMakeFiles/THUnderServer.dir/flags.make
+CMakeFiles/THUnderServer.dir/socket/Socket.cpp.obj: ../socket/Socket.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\THU\Lessons\1B\Cpp\THUnder\src\THUnderServer\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/THUnderServer.dir/socket/Socket.cpp.obj"
+	C:\mingw64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\THUnderServer.dir\socket\Socket.cpp.obj -c D:\THU\Lessons\1B\Cpp\THUnder\src\THUnderServer\socket\Socket.cpp
+
+CMakeFiles/THUnderServer.dir/socket/Socket.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/THUnderServer.dir/socket/Socket.cpp.i"
+	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\THU\Lessons\1B\Cpp\THUnder\src\THUnderServer\socket\Socket.cpp > CMakeFiles\THUnderServer.dir\socket\Socket.cpp.i
+
+CMakeFiles/THUnderServer.dir/socket/Socket.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/THUnderServer.dir/socket/Socket.cpp.s"
+	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\THU\Lessons\1B\Cpp\THUnder\src\THUnderServer\socket\Socket.cpp -o CMakeFiles\THUnderServer.dir\socket\Socket.cpp.s
 
 # Object files for target THUnderServer
 THUnderServer_OBJECTS = \
 "CMakeFiles/THUnderServer.dir/main.cpp.obj" \
 "CMakeFiles/THUnderServer.dir/dboperator.cpp.obj" \
-"CMakeFiles/THUnderServer.dir/sqlite/sqlite3.c.obj"
+"CMakeFiles/THUnderServer.dir/sqlite/sqlite3.c.obj" \
+"CMakeFiles/THUnderServer.dir/socket/Socket.cpp.obj"
 
 # External object files for target THUnderServer
 THUnderServer_EXTERNAL_OBJECTS =
@@ -107,11 +121,12 @@ THUnderServer_EXTERNAL_OBJECTS =
 THUnderServer.exe: CMakeFiles/THUnderServer.dir/main.cpp.obj
 THUnderServer.exe: CMakeFiles/THUnderServer.dir/dboperator.cpp.obj
 THUnderServer.exe: CMakeFiles/THUnderServer.dir/sqlite/sqlite3.c.obj
+THUnderServer.exe: CMakeFiles/THUnderServer.dir/socket/Socket.cpp.obj
 THUnderServer.exe: CMakeFiles/THUnderServer.dir/build.make
 THUnderServer.exe: CMakeFiles/THUnderServer.dir/linklibs.rsp
 THUnderServer.exe: CMakeFiles/THUnderServer.dir/objects1.rsp
 THUnderServer.exe: CMakeFiles/THUnderServer.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=D:\THU\Lessons\1B\Cpp\THUnder\src\THUnderServer\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable THUnderServer.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=D:\THU\Lessons\1B\Cpp\THUnder\src\THUnderServer\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable THUnderServer.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\THUnderServer.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

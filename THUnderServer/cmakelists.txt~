@@ -1,0 +1,12 @@
+cmake_minimum_required(VERSION 2.6)
+
+add_executable(THUnderServer
+  main.cpp
+  dboperator.cpp
+  dboperator.h
+  definitions.h
+  ./sqlite/sqlite3.h
+  ./sqlite/sqlite3.c
+)
+
+target_link_libraries(THUnderServer -lwsock32)

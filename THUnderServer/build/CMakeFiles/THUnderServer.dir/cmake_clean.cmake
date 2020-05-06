@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/THUnderServer.dir/dboperator.cpp.obj"
   "CMakeFiles/THUnderServer.dir/main.cpp.obj"
+  "CMakeFiles/THUnderServer.dir/socket/Socket.cpp.obj"
   "CMakeFiles/THUnderServer.dir/sqlite/sqlite3.c.obj"
   "THUnderServer.exe"
   "THUnderServer.exe.manifest"

@@ -1,0 +1,23 @@
+#pragma once
+#include <string>
+#include "../definitions.h"
+using std::string;
+
+class user {
+private:
+    string username;
+    string pswd;
+    CLT_TYPE _type;
+    
+private:
+    void checktype(const string&, const string&);
+
+public:
+    const CLT_TYPE* type;
+    
+public:
+    user(const string&, const string&);
+    ~user();
+    user(const user&) = delete;
+    user& operator = (const user&) = delete;
+};

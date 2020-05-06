@@ -15,6 +15,7 @@ set(CMAKE_C_TARGET_INCLUDE_PATH
 set(CMAKE_DEPENDS_CHECK_CXX
   "D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/dboperator.cpp" "D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/build/CMakeFiles/THUnderServer.dir/dboperator.cpp.obj"
   "D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/main.cpp" "D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/build/CMakeFiles/THUnderServer.dir/main.cpp.obj"
+  "D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/socket/Socket.cpp" "D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/build/CMakeFiles/THUnderServer.dir/socket/Socket.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

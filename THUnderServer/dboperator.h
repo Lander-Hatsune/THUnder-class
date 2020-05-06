@@ -5,30 +5,28 @@ The class 'dboperator' for sqlite database operations on server
 #pragma once
 #include <string>
 #include "./sqlite/sqlite3.h"
+#include "definitions.h"
 using std::string;
 
-#define CLTTYPE unsigned
-#define ADMIN 1
-#define TEACHER 2
-#define STU 3
+const char DBPATH[20] = "./Clients.db";
 
 class dboperator {
 private:
     sqlite3* db;
+    bool exist(const char* username) const;
 public:
-    dboperator(const char* path = "./Clients.db");
+    dboperator(const char* path = DBPATH);
     ~dboperator();
     dboperator(const dboperator&) = delete;
     dboperator& operator = (const dboperator&) = delete;
 
     unsigned add_client(const char* username,
                        const char* pswd,
-                       const CLTTYPE& type);
+                       const CLT_TYPE& type);
     unsigned del_client(const char* username);
     unsigned change_username(const char* username,
                              const char* new_username);
     unsigned change_pswd(const char* username,
                          const char* new_pswd);
-    CLTTYPE checktype(const char* username, const char* pswd) const;
-    bool exist(const char* username) const;
+    CLT_TYPE checktype(const char* username, const char* pswd) const;
 };

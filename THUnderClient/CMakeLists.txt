@@ -29,17 +29,29 @@ find_package(Qt5 COMPONENTS Widgets REQUIRED)
 if(ANDROID)
   add_library(THUnderClient SHARED
     main.cpp
-    loginpage.cpp
-    loginpage.h
-    loginpage.ui
+    view/loginpage.cpp
+    view/loginpage.h
+    view/uidesign/loginpage.ui
   )
 else()
   add_executable(THUnderClient
     main.cpp
-    loginpage.cpp
-    loginpage.h
-    loginpage.ui
+    definitions.h
+    view/loginpage.cpp
+    view/loginpage.h
+    view/loginpage.ui
+    view/adminmainpage.cpp
+    view/adminmainpage.h
+    view/adminmainpage.ui
+    controller/loginop.h
+    controller/loginop.cpp
+    controller/adminop.h
+    controller/adminop.cpp
+    model/Socket.h
+    model/Socket.cpp
+    model/client.h
+    model/client.cpp
   )
 endif()
 
-target_link_libraries(THUnderClient PRIVATE Qt5::Widgets)
+target_link_libraries(THUnderClient PRIVATE Qt5::Widgets -lwsock32)

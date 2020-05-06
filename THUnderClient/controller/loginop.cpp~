@@ -1,0 +1,24 @@
+#include "loginop.h"
+#include "../model/user.h"
+using std::string;
+
+void loginop::login(const string& username,
+                    const string& pswd) {
+    user tmp_user(username, pswd);
+    switch (*tmp_user.type) {
+    case ADMIN:
+        // admin page
+        break;
+    case TEACHER:
+        // teacher page
+        break;
+    case STU:
+        // stu page
+        break;
+    default:
+        this->failtime += 1;
+        if (this->failtime >= 3) {
+            // shut down
+        }
+    }
+}

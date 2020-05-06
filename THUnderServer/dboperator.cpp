@@ -11,7 +11,7 @@ dboperator::dboperator(const char* path) {
     int result = sqlite3_open(path, &this->db);
     // CREATE TABLE ClientInfo (username TEXT [NOT NULL], pswd TEXT[NOT NULL], type INTEGER [NOT NULL])
     if (result != SQLITE_OK) {
-        throw "Failed to initialize db";
+        printf("Failed to initialize db\n");
     }
 }
 
@@ -21,7 +21,7 @@ dboperator::~dboperator() {
 
 unsigned dboperator::add_client(const char* username,
                                const char* pswd,
-                               const CLTTYPE& type) {
+                               const CLT_TYPE& type) {
     // exclude existed username
     if (this->exist(username)) return 1;
     
@@ -113,7 +113,7 @@ unsigned dboperator::change_pswd(const char* username,
     }
 }
 
-CLTTYPE dboperator::checktype(const char* username,
+CLT_TYPE dboperator::checktype(const char* username,
                           const char* pswd) const {
     char* sql = new char[200];
     memset(sql, 0, sizeof(sql));
@@ -125,14 +125,15 @@ CLTTYPE dboperator::checktype(const char* username,
     sql = strcat(strcat(strcat(sql, "'"), pswd), "'");
 
     char** azresult;
+    int rows;
     int result = sqlite3_get_table(this->db, sql, &azresult,
-                                   NULL, NULL, NULL);
+                                   &rows, NULL, NULL);
 
     delete[] sql;
     if (result != SQLITE_OK) {
-        throw "Failed to give check";
+        printf("Failed to give check");
     }
-    if (azresult != NULL) {
+    if (rows >= 1) {
         return azresult[1][0] - '0';
     } else return 0;
     sqlite3_free_table(azresult);
@@ -153,7 +154,7 @@ bool dboperator::exist(const char* username) const {
 
     sqlite3_free_table(azresult);
     if (result != SQLITE_OK) {
-        throw "Failed to give existence";
+        printf("Failed to give existence");
     }
     
     if (rows) return true;

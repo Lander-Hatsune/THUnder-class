@@ -18,7 +18,7 @@
     <property name="geometry">
      <rect>
       <x>120</x>
-      <y>370</y>
+      <y>410</y>
       <width>93</width>
       <height>28</height>
      </rect>
@@ -40,13 +40,13 @@
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt; color:#0c1b71;&quot;&gt;THUnder Classroom&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>190</y>
+      <y>200</y>
       <width>301</width>
-      <height>131</height>
+      <height>101</height>
      </rect>
     </property>
     <layout class="QFormLayout" name="formLayout">
@@ -60,13 +60,6 @@
      <item row="0" column="1">
       <widget class="QLineEdit" name="le_username"/>
      </item>
-     <item row="1" column="1">
-      <widget class="QLabel" name="lbl_usernamealert">
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-     </item>
      <item row="2" column="0">
       <widget class="QLabel" name="lbl_pswd">
        <property name="text">
@@ -77,25 +70,21 @@
      <item row="2" column="1">
       <widget class="QLineEdit" name="le_pswd"/>
      </item>
-     <item row="3" column="1">
-      <widget class="QLabel" name="lbl_pswdalert">
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-     </item>
     </layout>
    </widget>
-  </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>337</width>
-     <height>26</height>
-    </rect>
-   </property>
+   <widget class="QLabel" name="lbl_pswdalert">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>310</y>
+      <width>301</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>

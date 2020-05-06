@@ -5,6 +5,10 @@
 * preparation
 - <2020-04-21 周二> install Qt.
 - <2020-04-29 周三> sqlite & c++, sql server
+- <2020-05-05 周二> 
+  login operation,
+  database op commands over socket
+    
 * GUI-Qt
 ** Notebook
 *** signal-slot
@@ -48,5 +52,31 @@ catch the "press" process and cannot judge true.
 
 ** constructors may not be cv-qualified
 constructors cannot be modified as =const=.
-* TODO TodoList
+** 无法解析的外部符号
+可能需要
+#+begin_src cpp
+#pragma comment (lib, "ws2_32.lib")
+#+end_src
+** cmake: build.make 57: Error 1
+tryna use cmd to process the =make= and got error:
+#+begin_src sh
+The file includes the uic file "./ui_loginpage.h",
+but the user interface file "loginpage.ui"
+could not be found in the following locations
+  "D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderClient/view/loginpage.ui"
+  "D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderClient/view/./loginpage.ui"
+#+end_src
+so when using cmake, maybe =.ui= file should be in the same path with 
+auto-generated =ui-xxx.h= file.
+** undefined reference to XXX (some func in Socket)
+#+begin_src text
+target_link_libraries(THUnderServer -lwsock32)
+#+end_src
+** multiple definition of 'vsnprintf'
+old problem of MinGW, already fixed in newest releases.
+* TodoList
 ** 第三范式
+** TODO split client to AdminClient, TeacherClient, StuClient
+** TODO uppcase names
+** TODO op -> loginop
+** TODO XXXop inheritation

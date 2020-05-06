@@ -2,6 +2,8 @@
 #define LOGINPAGE_H
 
 #include <QMainWindow>
+#include "../controller/loginop.h"
+#include "../controller/adminop.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class LoginPage; }
@@ -15,7 +17,11 @@ public:
     LoginPage(QWidget *parent = nullptr);
     ~LoginPage();
 
+private slots:
+    void on_b_login_clicked();
+
 private:
+    loginop* op;
     Ui::LoginPage *ui;
 };
 #endif // LOGINPAGE_H
