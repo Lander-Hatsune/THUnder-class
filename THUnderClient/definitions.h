@@ -1,7 +1,8 @@
 #pragma once
 #define CLT_TYPE unsigned
-#define ADMIN 1
-#define TEACHER 2
-#define STU 3
-#define VALID 0
-#define INVALID 1
+
+const int ADMIN = 1;
+const int TEACHER = 2;
+const int STU = 3;
+const int VALID = 0;
+const int INVALID = 1;

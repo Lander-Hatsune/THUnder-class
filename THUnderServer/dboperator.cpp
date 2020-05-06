@@ -49,6 +49,8 @@ unsigned dboperator::add_client(const char* username,
 
 unsigned dboperator::del_client(const char* username) {
 
+    if (!this->exist(username)) return 1;// doesn't exist
+    
     char* sql = new char[200];
     memset(sql, 0, sizeof(sql));
 
@@ -68,8 +70,10 @@ unsigned dboperator::del_client(const char* username) {
 
 unsigned dboperator::change_username(const char* username,
                                     const char* new_username) {
+    // doesn't exist
+    if (!this->exist(username)) return 1;
     // exclude existed username
-    if (this->exist(new_username)) return 1;
+    if (this->exist(new_username)) return 2;
     
     char* sql = new char[200];
     memset(sql, 0, sizeof(sql));
@@ -93,6 +97,10 @@ unsigned dboperator::change_username(const char* username,
 
 unsigned dboperator::change_pswd(const char* username,
                                 const char* new_pswd) {
+
+    // doesn't exist
+    if (!this->exist(username)) return 1;
+    
     char* sql = new char[200];
     memset(sql, 0, sizeof(sql));
 

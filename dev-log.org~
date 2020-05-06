@@ -74,7 +74,7 @@ target_link_libraries(THUnderServer -lwsock32)
 #+end_src
 ** multiple definition of 'vsnprintf'
 old problem of MinGW, already fixed in newest releases.
-* TODO TodoList
+* TodoList
 ** µÚÈý·¶Ê½
 ** TODO split client to AdminClient, TeacherClient, StuClient
 ** TODO uppcase names

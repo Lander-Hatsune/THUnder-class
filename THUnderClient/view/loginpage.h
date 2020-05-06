@@ -21,7 +21,7 @@ private slots:
     void on_b_login_clicked();
 
 private:
-    loginop* op;
+    Loginop* loginop;
     Ui::LoginPage *ui;
 };
 #endif // LOGINPAGE_H

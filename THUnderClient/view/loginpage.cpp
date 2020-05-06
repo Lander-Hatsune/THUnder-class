@@ -5,16 +5,23 @@
 #include <QString>
 using std::to_string;
 
+// debug
+//#include <iostream>
+#include <cstdio>
+using namespace std;
+
 LoginPage::LoginPage(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::LoginPage)
 {
     ui->setupUi(this);
+    this->loginop = new Loginop();
 }
 
 LoginPage::~LoginPage()
 {
     delete ui;
+    delete this->loginop;
 }
 
 
@@ -22,12 +29,16 @@ void LoginPage::on_b_login_clicked()
 {
     string username = this->ui->le_username->text().toStdString();
     string pswd = this->ui->le_pswd->text().toStdString();
-    unsigned keeploginpage = this->op->login(username, pswd);
-    printf("%d\n", *(this->op->failtime));
-    if (*(this->op->failtime) >= 1) {
-        ui->lbl_pswdalert->setText("username or password is invalid,\nyou can try " +
-                                   QString::fromStdString(to_string(3 - *(this->op->failtime))) +
-                                   " more times");
+    if (username.empty() || pswd.empty()) return;
+    const QString ret = this->loginop->login(username, pswd);
+    if (ret == ":SHUT:") {
+        printf("shut\n");
+        this->close();
     }
-    if (!keeploginpage) this->close();
+    else if (ret == ":HIDE:") {
+        printf("hide\n");
+        this->hide();
+    }
+
+    ui->lbl_pswdalert->setText(ret);
 }

@@ -1,56 +1,67 @@
 #include "adminop.h"
 
-Adminop::Adminop(const Client* clt) {
-    this->clt = clt;
+Adminop::Adminop(Adminclient* adminclt) {
+    this->adminclt = adminclt;
 }
 
 Adminop::~Adminop() {;}
 
-void Adminop::add_client(const string& username,
-                         const string& pswd) const {
-    if (username.find(':') != -1ull ||
-        pswd.find(':') != -1ull) {
-        // text: cannot contain colon!
-        return;
-    }
-    this->clt->sock.SendLine(ADD_CLIENT + username + ":" + pswd);
-    string fb = this->clt.sock.ReceiveLine();
-    if ((fb[0] - '0') == VALID) {
-        // text: done!
-    } else {
-        // text: username repeated!
-    }
-}
-
-void Adminop::del_client(const string& username) const {
-    this->clt.sock.SendLine(DEL_CLIENT + username);
-    string fb = this->clt.sock.ReceiveLine();
-    if ((fb[0] - '0') == VALID) {
-        // text: done!
-    } else {
-        // text: user doesnt exist!
+const QString Adminop::add_clientop(const string& username,
+                                    const string& pswd,
+                                    const CLT_TYPE& type) {
+    unsigned ret = this->adminclt->add_client(username, pswd, type);
+    switch (ret) {
+    case 0:
+        return "User added!";
+    case 1:
+        return "Username already exists!";
+    case 2:
+        return "Username or password illegal";
+    default:
+        return "";
     }
 }
 
-void Adminop::change_username(const string& username,
-                              const string& new_username) const {
-    this->clt.sock.SendLine(CHANGE_USERNAME +
-                            username + ":" + new_username);
-    string fb = this->clt.sock.ReceiveLine();
-    if ((fb[0] - '0') == VALID) {
-        // text: done!
-    } else {
-        // text: user doesnt exist!
+const QString Adminop::del_clientop(const string& username) {
+    unsigned ret = this->adminclt->del_client(username);
+    switch (ret) {
+    case 0:
+        return "User deleted!";
+    case 1:
+        return "User not found!";
+    default:
+        return "";
     }
 }
 
-void Adminop::change_pswd(const string& username,
-                          const string& new_pswd) const {
-    this->clt.sock.SendLine(CHANGE_PSWD + username + ":" + new_pswd);
-    string fb = this->clt.sock.ReceiveLine();
-    if ((fb[0] - '0') == VALID) {
-        // text: done!
-    } else {
-        // text: user doesnt exist!
+const QString Adminop::change_usernameop(const string& username,
+                              const string& new_username) {
+    unsigned ret = this->adminclt->change_username(username, new_username);
+    switch (ret) {
+    case 0:
+        return "Username changed!";
+    case 1:
+        return "User not found!";
+    case 2:
+        return "New username already exists!";
+    case 3:
+        return "Username or new username illegal!";
+    default:
+        return "";
+    }
+}
+
+const QString Adminop::change_pswdop(const string& username,
+                          const string& new_pswd) {
+    unsigned ret = this->adminclt->change_pswd(username, new_pswd);
+    switch (ret) {
+    case 0:
+        return "Password changed!";
+    case 1:
+        return "User not found!";
+    case 2:
+        return "Username or new password illegal";
+    default:
+        return "";
     }
 }

@@ -1,24 +1,23 @@
 #pragma once
+#include <QString>
 #include "../definitions.h"
-#include "../view/adminmainpage.h"
+//#include "../view/adminmainpage.h"
 #include "../model/client.h"
-
-const string ADD_CLIENT = ":AC:";
-const string DEL_CLIENT = ":DC:";
-const string CHANGE_USERNAME = ":CU:";
-const string CHANGE_PSWD = ":CP:";
+#include "../model/adminclient.h"
 
 class Adminop {
 private:
-    const Client* clt;
+    Adminclient* adminclt;
+
 public:
-    Adminop(const Client* clt);
+    Adminop(Adminclient* adminclt);
     ~Adminop();
     Adminop(const Adminop&) = delete;
-    Adminop& Adminop(const Adminop&) = delete;
-    void add_client(const string&, const string&) const;
-    void del_client(const string&) const;
-    void change_username(const string&, const string&) const;
-    void change_pswd(const string&, const string&) const;
+    Adminop& operator = (const Adminop&) = delete;
+    const QString add_clientop(const string&, const string&,
+                               const CLT_TYPE&);
+    const QString del_clientop(const string&);
+    const QString change_usernameop(const string&, const string&);
+    const QString change_pswdop(const string&, const string&);
 };
 

@@ -26,28 +26,6 @@ D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/definitions.h
 
 D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/definitions.h
 
-D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/main.cpp
-dboperator.h
-D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/dboperator.h
-Socket/Socket.h
-D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/socket/Socket.h
-iostream
--
-cstdio
--
-string
--
-process.h
--
-vector
--
-
-D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/socket/Socket.h
-WinSock2.h
--
-string
--
-
 D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/sqlite/sqlite3.h
 stdarg.h
 -

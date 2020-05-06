@@ -1,35 +1,43 @@
 #include "loginop.h"
 #include "../view/loginpage.h"
 #include <cstdio>
+#include <string>
 
+using std::to_string;
 using std::string;
 
-loginop::loginop() {
-    this->_failtime = 0;
-    this->failtime = &this->_failtime;
+Loginop::Loginop() {
+    this->failtime = 0;
 }
 
-loginop::~loginop() {;}
+Loginop::~Loginop() {;}
 
-unsigned loginop::login(const string& username,
-                        const string& pswd) {
+const QString Loginop::login(const string& username,
+                             const string& pswd) {
     Client* pclt = new Client(username, pswd);
-    switch (*pclt->type) {
-    case ADMIN:
-        Adminop* adminop = new Adminop(*pclt);
-        AdminMainPage* adminmainpage = new AdminMainPage(adminop);
+    if (*(pclt->type) == ADMIN) {
+        Adminclient* adminclt = new Adminclient(pclt);
+        Adminop* adminop = new Adminop(adminclt);
+        AdminMainPage* adminmainpage = new AdminMainPage(nullptr, adminop);
         adminmainpage->setWindowTitle("Administrator Mode (THUnder Class)");
         adminmainpage->show();
-        return 0;
-    case TEACHER:
+        return ":HIDE:";
+    }
+    else if (*(pclt->type) == TEACHER) {
         //TeacherMainPage* teachermainpage = new TeacherMainPage();
-        return 0;
-    case STU:
+        return ":HIDE:";
+    }
+    else if (*(pclt->type) == STU) {
         //StuMainPage* stumainpage = new StuMainPage();
-        return 0;
-    default:
-        this->_failtime += 1;
+        return ":HIDE:";
+    }
+    else {
+        printf("fail:%d\n", failtime);
+        this->failtime += 1;
         delete pclt;
-        return 1;
+        if (failtime >= 3) return ":SHUT:";
+        else return "Username or password is wrong!\nYou have " +
+                QString::fromStdString(to_string(3 - this->failtime) +
+                                       " more times to try");
     }
 }

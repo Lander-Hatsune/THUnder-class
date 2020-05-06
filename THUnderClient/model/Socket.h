@@ -28,7 +28,6 @@
 #define SOCKET_H
 
 #include <WinSock2.h>
-#pragma comment (lib, "ws2_32.lib")
 #include <string>
 
 enum TypeSocket {BlockingSocket, NonBlockingSocket};

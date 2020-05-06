@@ -1,8 +1,0 @@
-#include "adminop.h"
-
-Adminop::Adminop(const client& clt) {
-    this->clt = clt;
-}
-
-Adminop::~Adminop() {;}
-
