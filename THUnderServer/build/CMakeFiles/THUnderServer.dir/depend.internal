@@ -3,17 +3,46 @@
 
 CMakeFiles/THUnderServer.dir/sqlite/sqlite3.c.obj
  D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/sqlite/sqlite3.c
+CMakeFiles/THUnderServer.dir/audioserver.cpp.obj
+ D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/audioserver.cpp
+ D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/audioserver.h
+ D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/socket/Socket.h
 CMakeFiles/THUnderServer.dir/dboperator.cpp.obj
  D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/dboperator.cpp
  D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/dboperator.h
  D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/definitions.h
  D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/sqlite/sqlite3.h
 CMakeFiles/THUnderServer.dir/main.cpp.obj
+ D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/audioserver.h
  D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/dboperator.h
  D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/definitions.h
  D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/main.cpp
  D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/socket/Socket.h
  D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/sqlite/sqlite3.h
+ D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/triserver.h
+ D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/txtserver.h
+ D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/vidserver.h
 CMakeFiles/THUnderServer.dir/socket/Socket.cpp.obj
  D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/socket/Socket.cpp
  D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/socket/Socket.h
+CMakeFiles/THUnderServer.dir/triserver.cpp.obj
+ D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/audioserver.h
+ D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/dboperator.h
+ D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/definitions.h
+ D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/socket/Socket.h
+ D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/sqlite/sqlite3.h
+ D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/triserver.cpp
+ D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/triserver.h
+ D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/txtserver.h
+ D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/vidserver.h
+CMakeFiles/THUnderServer.dir/txtserver.cpp.obj
+ D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/dboperator.h
+ D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/definitions.h
+ D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/socket/Socket.h
+ D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/sqlite/sqlite3.h
+ D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/txtserver.cpp
+ D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/txtserver.h
+CMakeFiles/THUnderServer.dir/vidserver.cpp.obj
+ D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/socket/Socket.h
+ D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/vidserver.cpp
+ D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/vidserver.h

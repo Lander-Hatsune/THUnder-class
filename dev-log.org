@@ -82,6 +82,8 @@ old problem of MinGW, already fixed in newest releases.
 可能是头文件相互包含了
 ** undefined reference to winmain
 change the main func a little bit then correct it back
+** 字体异常
+尝试删除字体，重启qt解决
 * TodoList
 ** 第三范式
 ** DONE admin
@@ -90,3 +92,4 @@ change the main func a little bit then correct it back
 *** DONE op -> loginop
 *** DONE XXXop inheritation                                       :aborted:
 ** TODO teacher
+* public IP: 60.220.128.133

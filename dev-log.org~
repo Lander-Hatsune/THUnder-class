@@ -70,13 +70,23 @@ so when using cmake, maybe =.ui= file should be in the same path with
 auto-generated =ui-xxx.h= file.
 ** undefined reference to XXX (some func in Socket)
 #+begin_src text
-target_link_libraries(THUnderServer -lwsock32)
+cmake: target_link_libraries(THUnderServer -lwsock32)
+qmake: LIBS += -lws2_32
 #+end_src
 ** multiple definition of 'vsnprintf'
 old problem of MinGW, already fixed in newest releases.
+** jump case label
+不要在case里定义变量
+** 看上去是缺头文件的错误
+如： =Adminop is not declared= \\
+可能是头文件相互包含了
+** undefined reference to winmain
+change the main func a little bit then correct it back
 * TodoList
 ** 第三范式
-** TODO split client to AdminClient, TeacherClient, StuClient
-** TODO uppcase names
-** TODO op -> loginop
-** TODO XXXop inheritation
+** DONE admin
+*** DONE split client to AdminClient, TeacherClient, StuClient
+*** DONE uppcase names
+*** DONE op -> loginop
+*** DONE XXXop inheritation                                       :aborted:
+** TODO teacher

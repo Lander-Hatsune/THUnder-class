@@ -122,6 +122,33 @@ THUnderServer/fast:
 	$(MAKE) -f CMakeFiles\THUnderServer.dir\build.make CMakeFiles/THUnderServer.dir/build
 .PHONY : THUnderServer/fast
 
+audioserver.obj: audioserver.cpp.obj
+
+.PHONY : audioserver.obj
+
+# target to build an object file
+audioserver.cpp.obj:
+	$(MAKE) -f CMakeFiles\THUnderServer.dir\build.make CMakeFiles/THUnderServer.dir/audioserver.cpp.obj
+.PHONY : audioserver.cpp.obj
+
+audioserver.i: audioserver.cpp.i
+
+.PHONY : audioserver.i
+
+# target to preprocess a source file
+audioserver.cpp.i:
+	$(MAKE) -f CMakeFiles\THUnderServer.dir\build.make CMakeFiles/THUnderServer.dir/audioserver.cpp.i
+.PHONY : audioserver.cpp.i
+
+audioserver.s: audioserver.cpp.s
+
+.PHONY : audioserver.s
+
+# target to generate assembly for a file
+audioserver.cpp.s:
+	$(MAKE) -f CMakeFiles\THUnderServer.dir\build.make CMakeFiles/THUnderServer.dir/audioserver.cpp.s
+.PHONY : audioserver.cpp.s
+
 dboperator.obj: dboperator.cpp.obj
 
 .PHONY : dboperator.obj
@@ -230,6 +257,87 @@ sqlite/sqlite3.c.s:
 	$(MAKE) -f CMakeFiles\THUnderServer.dir\build.make CMakeFiles/THUnderServer.dir/sqlite/sqlite3.c.s
 .PHONY : sqlite/sqlite3.c.s
 
+triserver.obj: triserver.cpp.obj
+
+.PHONY : triserver.obj
+
+# target to build an object file
+triserver.cpp.obj:
+	$(MAKE) -f CMakeFiles\THUnderServer.dir\build.make CMakeFiles/THUnderServer.dir/triserver.cpp.obj
+.PHONY : triserver.cpp.obj
+
+triserver.i: triserver.cpp.i
+
+.PHONY : triserver.i
+
+# target to preprocess a source file
+triserver.cpp.i:
+	$(MAKE) -f CMakeFiles\THUnderServer.dir\build.make CMakeFiles/THUnderServer.dir/triserver.cpp.i
+.PHONY : triserver.cpp.i
+
+triserver.s: triserver.cpp.s
+
+.PHONY : triserver.s
+
+# target to generate assembly for a file
+triserver.cpp.s:
+	$(MAKE) -f CMakeFiles\THUnderServer.dir\build.make CMakeFiles/THUnderServer.dir/triserver.cpp.s
+.PHONY : triserver.cpp.s
+
+txtserver.obj: txtserver.cpp.obj
+
+.PHONY : txtserver.obj
+
+# target to build an object file
+txtserver.cpp.obj:
+	$(MAKE) -f CMakeFiles\THUnderServer.dir\build.make CMakeFiles/THUnderServer.dir/txtserver.cpp.obj
+.PHONY : txtserver.cpp.obj
+
+txtserver.i: txtserver.cpp.i
+
+.PHONY : txtserver.i
+
+# target to preprocess a source file
+txtserver.cpp.i:
+	$(MAKE) -f CMakeFiles\THUnderServer.dir\build.make CMakeFiles/THUnderServer.dir/txtserver.cpp.i
+.PHONY : txtserver.cpp.i
+
+txtserver.s: txtserver.cpp.s
+
+.PHONY : txtserver.s
+
+# target to generate assembly for a file
+txtserver.cpp.s:
+	$(MAKE) -f CMakeFiles\THUnderServer.dir\build.make CMakeFiles/THUnderServer.dir/txtserver.cpp.s
+.PHONY : txtserver.cpp.s
+
+vidserver.obj: vidserver.cpp.obj
+
+.PHONY : vidserver.obj
+
+# target to build an object file
+vidserver.cpp.obj:
+	$(MAKE) -f CMakeFiles\THUnderServer.dir\build.make CMakeFiles/THUnderServer.dir/vidserver.cpp.obj
+.PHONY : vidserver.cpp.obj
+
+vidserver.i: vidserver.cpp.i
+
+.PHONY : vidserver.i
+
+# target to preprocess a source file
+vidserver.cpp.i:
+	$(MAKE) -f CMakeFiles\THUnderServer.dir\build.make CMakeFiles/THUnderServer.dir/vidserver.cpp.i
+.PHONY : vidserver.cpp.i
+
+vidserver.s: vidserver.cpp.s
+
+.PHONY : vidserver.s
+
+# target to generate assembly for a file
+vidserver.cpp.s:
+	$(MAKE) -f CMakeFiles\THUnderServer.dir\build.make CMakeFiles/THUnderServer.dir/vidserver.cpp.s
+.PHONY : vidserver.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -239,6 +347,9 @@ help:
 	@echo ... THUnderServer
 	@echo ... edit_cache
 	@echo ... rebuild_cache
+	@echo ... audioserver.obj
+	@echo ... audioserver.i
+	@echo ... audioserver.s
 	@echo ... dboperator.obj
 	@echo ... dboperator.i
 	@echo ... dboperator.s
@@ -251,6 +362,15 @@ help:
 	@echo ... sqlite/sqlite3.obj
 	@echo ... sqlite/sqlite3.i
 	@echo ... sqlite/sqlite3.s
+	@echo ... triserver.obj
+	@echo ... triserver.i
+	@echo ... triserver.s
+	@echo ... txtserver.obj
+	@echo ... txtserver.i
+	@echo ... txtserver.s
+	@echo ... vidserver.obj
+	@echo ... vidserver.i
+	@echo ... vidserver.s
 .PHONY : help
 
 

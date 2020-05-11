@@ -4,7 +4,15 @@ add_executable(THUnderServer
   main.cpp
   dboperator.cpp
   dboperator.h
-  definitions.h
+  audioserver.h
+  audioserver.cpp
+  txtserver.h
+  txtserver.cpp
+  vidserver.h
+  vidserver.cpp
+  triserver.h
+  triserver.cpp
+  ./definitions.h
   ./sqlite/sqlite3.h
   ./sqlite/sqlite3.c
   ./socket/Socket.h

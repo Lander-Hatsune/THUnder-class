@@ -1,8 +1,6 @@
 #pragma once
 #include <QString>
 #include "../definitions.h"
-//#include "../view/adminmainpage.h"
-#include "../model/client.h"
 #include "../model/adminclient.h"
 
 class Adminop {

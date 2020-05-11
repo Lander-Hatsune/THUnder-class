@@ -1,6 +1,5 @@
 #include "loginpage.h"
 #include "./ui_loginpage.h"
-#include "../controller/loginop.h"
 #include <string>
 #include <QString>
 using std::to_string;
@@ -16,6 +15,7 @@ LoginPage::LoginPage(QWidget *parent)
 {
     ui->setupUi(this);
     this->loginop = new Loginop();
+    this->setWindowTitle("THUnder Class-login");
 }
 
 LoginPage::~LoginPage()

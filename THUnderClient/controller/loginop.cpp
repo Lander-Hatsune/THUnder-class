@@ -1,5 +1,4 @@
 #include "loginop.h"
-#include "../view/loginpage.h"
 #include <cstdio>
 #include <string>
 
@@ -24,7 +23,11 @@ const QString Loginop::login(const string& username,
         return ":HIDE:";
     }
     else if (*(pclt->type) == TEACHER) {
-        //TeacherMainPage* teachermainpage = new TeacherMainPage();
+        Teacherclient* teacherclt = new Teacherclient(pclt);
+        Teacherop* teacherop = new Teacherop(teacherclt);
+        TeacherMainPage* teachermainpage = new TeacherMainPage(nullptr, teacherop);
+        teachermainpage->show();
+        teachermainpage->setWindowTitle("Teacher Mode (THUnder Class)");
         return ":HIDE:";
     }
     else if (*(pclt->type) == STU) {

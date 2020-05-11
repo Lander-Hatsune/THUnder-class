@@ -2,10 +2,18 @@
 #include <string>
 #include <QWidget>
 #include "../definitions.h"
+
 #include "../model/client.h"
 #include "../model/adminclient.h"
-#include "adminop.h"
+#include "../model/teacherclient.h"
+
+#include "../controller/adminop.h"
+#include "../controller/teacherop.h"
+
 #include "../view/adminmainpage.h"
+#include "../view/teachermainpage.h"
+#include "../view/stumainpage.h"
+
 using std::string;
 
 class Loginop {

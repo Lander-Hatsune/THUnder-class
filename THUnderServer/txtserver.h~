@@ -1,0 +1,16 @@
+#pragma once
+#include "SocketServer.h"
+
+class TxtServer: public SocketServer {
+public:
+    TxtServer(const int port, const int maxnum);
+    ~TxtServer();
+    TxtServer(const TxtServer&) = delete;
+    TxtServer& operator = (const TxtServer&) = delete;
+    
+    unsigned __stdcall Answer(void* x);
+    
+private:
+    dboperator db;
+    vector<Socket*> socks;
+};

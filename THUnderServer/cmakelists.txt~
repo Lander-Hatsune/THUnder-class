@@ -4,9 +4,11 @@ add_executable(THUnderServer
   main.cpp
   dboperator.cpp
   dboperator.h
-  definitions.h
+  ./definitions.h
   ./sqlite/sqlite3.h
   ./sqlite/sqlite3.c
+  ./socket/Socket.h
+  ./socket/Socket.cpp
 )
 
 target_link_libraries(THUnderServer -lwsock32)

@@ -1,0 +1,45 @@
+#include "triserver.h"
+
+TriServer::TriServer(const int txtport, const int audioport,
+                     const int vidport, const int maxnum):
+    txtserver(txtport, maxnum),
+    audioserver(audioport, maxnum),
+    vidserver(vidport, maxnum) {
+    
+}
+TriServer::~TriServer() {;}
+
+void TriServer::accept() {
+    printf("a new connection\n");
+    unsigned ret;
+    
+    Socket* txtsock = this->txtserver.accept();
+    this->txtserver.socks.push_back(txtsock);
+    _beginthreadex(0, 0, txtserver->Answer, (void*) sock, 0, &ret);
+    
+    Socket* audiosock = this->audioserver.accept();
+    this->audioserver.socks.push_back(audiosock);
+    _beginthreadex(0, 0, audioserver->Answer, (void*) sock, 0, &ret);
+    
+    Socket* vidsock = this->vidserver.accept();
+    this->vidserver.socks.push_back(vidsock);
+    _beginthreadex(0, 0, vidserver->Answer, (void*) sock, 0, &ret);
+    printf("connection established\n");
+    
+}
+void TriServer::sendtoall(const unsigned type, string& msg) const {
+    switch (type) {
+    case TXTSERVER:
+        for (int i = 0; i < this->txtsocks.length(); i++) {
+            txtsocks[i]->SendLine(msg);
+        }
+    case AUDIOSERVER:
+        for (int i = 0; i < this->audiosocks.length(); i++) {
+            audiosocks[i]->SendLine(msg);
+        }
+    case VIDSERVER:
+        for (int i = 0; i < this->audiosocks.length(); i++) {
+            vidsocks[i]->SendLine(msg);
+        }
+    }
+}
