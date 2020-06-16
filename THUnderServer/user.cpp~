@@ -1,0 +1,20 @@
+#include "user.h"
+
+User::User(unsigned type, unsigned number, Socket* sock) {
+    this->is_online = true;
+    this->is_online_w = &is_online;
+    this->type = type;
+    this->number = number;
+    this->sock = sock;
+    this->number_w = &this->number;
+}
+
+User::~User() {};
+
+void User::sendmsg(const string& str) {
+    this->sock->SendLine(str);
+}
+
+void User::offline() {
+    this->is_online = false;
+}

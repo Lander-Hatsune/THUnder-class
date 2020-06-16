@@ -28,6 +28,7 @@
 #define SOCKET_H
 
 #include <WinSock2.h>
+
 #include <string>
 
 enum TypeSocket {BlockingSocket, NonBlockingSocket};

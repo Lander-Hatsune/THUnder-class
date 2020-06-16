@@ -2,12 +2,35 @@
 #+author: LanderX
 #+title: 2020 THUnder-class development log
 
-* preparation
+* notebook
+- login
+- checktype: 
+  - qt grab info, send to server
+  - server check the database info, checktype, add stu and teacher, and their number, into vector, teacher first.
+  - server send the result type
+  - qt respond in gui
+- audio:
+  - teacher give sig to server 
+  - server give sig to stu (set a variable true)
+  - qt check the variable by time, start streaming
+  - stream to server
+  - foreach Socket* not self, push
+  - everyone receive audio msg by time, play
+- video:
+  - teacher stream to server
+  - foreach Socket* not teacher, push
+  - every stu receive video msg by time, play
+
+
+* log
 - <2020-04-21 周二> install Qt.
 - <2020-04-29 周三> sqlite & c++, sql server
 - <2020-05-05 周二> 
   login operation,
   database op commands over socket
+- <2020-06-16 周二> 
+  - random roll call, stuck in the audio transmission from stu to teacher.
+  - teacher broadcast: complete
     
 * GUI-Qt
 ** Notebook

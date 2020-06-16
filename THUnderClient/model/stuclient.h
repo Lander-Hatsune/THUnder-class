@@ -2,12 +2,9 @@
 #include "client.h"
 
 class Stuclient: public Client {
-    friend class Teacherclient;
 public:
     Stuclient(Client* clt);
     ~Stuclient();
-    void sendaudio(string&);
-    string receiveaudio();
-private:
-    
+    void send_audiopiece(string&);
+    string receive_msg();
 };

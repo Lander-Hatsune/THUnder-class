@@ -3,11 +3,6 @@
 #include <string>
 using std::to_string;
 
-const string ADD_CLIENT = ":AC:";
-const string DEL_CLIENT = ":DC:";
-const string CHANGE_USERNAME = ":CU:";
-const string CHANGE_PSWD = ":CP:";
-
 class Adminclient: public Client {
 public:
     Adminclient(Client* clt);

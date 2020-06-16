@@ -1,4 +1,4 @@
-#include "triserver.h"
+#include "server.h"
 #include "definitions.h"
 #include <iostream>
 #include <cstdio>
@@ -9,8 +9,7 @@
 using namespace std;
 
 int main(void) {
-    TriServer server(TXTPORT, AUDIOPORT, VIDPORT,
-                     MAX_CLT_NUMBER);
+    Server server(PORT, MAX_CLT_NUMBER);
     while (true) {
         server.accept();
     }

@@ -1,16 +1,20 @@
 #pragma once
-#include "SocketServer.h"
+#include "./socket/Socket.h"
+#include "dboperator.h"
+#include <vector>
+using std::vector;
 
 class TxtServer: public SocketServer {
+    friend class TriServer;
 public:
     TxtServer(const int port, const int maxnum);
     ~TxtServer();
     TxtServer(const TxtServer&) = delete;
     TxtServer& operator = (const TxtServer&) = delete;
     
-    unsigned __stdcall Answer(void* x);
+    static unsigned __stdcall Answer(void* x);
     
 private:
-    dboperator db;
-    vector<Socket*> socks;
+    static dboperator db;
+    static std::vector<Socket*> socks;
 };

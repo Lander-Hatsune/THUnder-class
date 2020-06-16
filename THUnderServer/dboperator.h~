@@ -17,8 +17,8 @@ private:
 public:
     dboperator(const char* path = DBPATH);
     ~dboperator();
-    dboperator(const dboperator&);
-    dboperator& operator = (const dboperator&);
+    dboperator(const dboperator&) = delete;
+    dboperator& operator = (const dboperator&) = delete;
 
     unsigned add_client(const char* username,
                        const char* pswd,

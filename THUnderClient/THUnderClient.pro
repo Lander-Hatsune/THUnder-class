@@ -17,35 +17,36 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    controller/teacherop.cpp \
+    controller/stuop.cpp \
     main.cpp \
     model/Socket.cpp \
     model/adminclient.cpp \
     model/client.cpp \
+    model/stuclient.cpp \
+    model/teacherclient.cpp \
     controller/adminop.cpp \
     controller/loginop.cpp \
-    model/teacherclient.cpp \
+    controller/teacherop.cpp \
     view/stumainpage.cpp \
     view/teachermainpage.cpp \
     view/adminmainpage.cpp \
-    view/loginpage.cpp\
-    view/audioinfo.cpp
+    view/loginpage.cpp
 
 HEADERS += \
-    controller/teacherop.h \
     definitions.h \
     model/Socket.h \
     model/adminclient.h \
     model/client.h \
     controller/adminop.h \
     controller/loginop.h \
+    controller/stuop.h \
+    controller/teacherop.h \
     model/stuclient.h \
     model/teacherclient.h \
     view/stumainpage.h \
     view/teachermainpage.h \
     view/adminmainpage.h \
-    view/loginpage.h\
-    view/audioinfo.h
+    view/loginpage.h
 
 FORMS += \
     view/stumainpage.ui \

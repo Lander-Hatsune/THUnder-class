@@ -4,13 +4,12 @@
 #include <vector>
 using std::vector;
 
-class TxtServer: public SocketServer {
-    friend class TriServer;
+class Server: public SocketServer {
 public:
-    TxtServer(const int port, const int maxnum);
-    ~TxtServer();
-    TxtServer(const TxtServer&) = delete;
-    TxtServer& operator = (const TxtServer&) = delete;
+    Server(const int port, const int maxnum);
+    ~Server();
+    Server(const Server&) = delete;
+    Server& operator = (const Server&) = delete;
     
     static unsigned __stdcall Answer(void* x);
     

@@ -6,12 +6,14 @@
 
 #IncludeRegexTransform: 
 
-D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/audioserver.h
-./socket/Socket.h
-D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/socket/Socket.h
-vector
+D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/dboperator.cpp
+dboperator.h
+D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/dboperator.h
+cstdio
 -
-string
+cstring
+-
+cstdlib
 -
 
 D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/dboperator.h
@@ -27,8 +29,8 @@ string
 -
 
 D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/main.cpp
-triserver.h
-D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/triserver.h
+server.h
+D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/server.h
 definitions.h
 D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/definitions.h
 iostream
@@ -44,6 +46,30 @@ vector
 iostream
 -
 
+D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/server.cpp
+server.h
+D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/server.h
+process.h
+-
+string
+-
+iostream
+-
+vector
+-
+cstdlib
+-
+ctime
+-
+
+D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/server.h
+./socket/Socket.h
+D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/socket/Socket.h
+dboperator.h
+D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/dboperator.h
+User.h
+D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/user.h
+
 D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/socket/Socket.h
 WinSock2.h
 -
@@ -54,39 +80,9 @@ D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/sqlite/sqlite3.h
 stdarg.h
 -
 
-D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/triserver.cpp
-triserver.h
-D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/triserver.h
-
-D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/triserver.h
-string
--
-txtserver.h
-D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/txtserver.h
-audioserver.h
-D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/audioserver.h
-vidserver.h
-D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/vidserver.h
-
-D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/txtserver.cpp
-txtserver.h
-D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/txtserver.h
-string
--
-iostream
--
-
-D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/txtserver.h
+D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/user.h
 ./socket/Socket.h
 D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/socket/Socket.h
-dboperator.h
-D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/dboperator.h
-vector
--
-
-D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/vidserver.h
-./socket/Socket.h
-D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/socket/Socket.h
-vector
+string
 -
 

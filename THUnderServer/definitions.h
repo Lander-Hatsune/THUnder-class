@@ -9,9 +9,7 @@ using std::string;
 #define VALID 0
 #define INVALID 1
 
-const int TXTPORT = 4000;
-const int AUDIOPORT = 4001;
-const int VIDPORT = 4002;
+const int PORT = 4000;
 const int MAX_CLT_NUMBER = 50;
 
 const string CHECK_TYPE = ":CT:";
@@ -20,6 +18,12 @@ const string DEL_CLIENT = ":DC:";
 const string CHANGE_USERNAME = ":CU:";
 const string CHANGE_PSWD = ":CP:";
 
-const unsigned TXTSERVER = 1;
-const unsigned AUDIOSERVER = 2;
-const unsigned VIDSERVER = 3;
+const string AUDIO_OPEN = ":AO:";
+const string AUDIO_SHUT = ":AS:";
+const string AUDIO_MSG = ":AU:";
+
+const string VID_MSG = ":VD:";
+
+const string RAND_CALL = ":RC:";
+const string CALLED_USERNAME = ":CU:";
+const string RAND_CALL_OVER = ":RO:";

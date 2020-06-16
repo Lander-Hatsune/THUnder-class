@@ -27,10 +27,12 @@ private slots:
     void on_cb_audiodevice_currentIndexChanged(int index);
     void get_audiodata_sent();
 
+    void on_b_randcall_clicked();
+
 private:
     void init_window();
-    void init_rec(const QAudioDeviceInfo&);
-    void stop_rec();
+    void init_audio(const QAudioDeviceInfo&);
+    void stop_audio();
 
     Teacherop* teacherop;
     Ui::TeacherMainPage *ui;
@@ -39,6 +41,7 @@ private:
     QScopedPointer<QAudioOutput> m_audioOutput;
     QIODevice* m_inputIOdevice;
     QIODevice* m_outputIOdevice;
+    static DWORD WINAPI receive_msg(LPVOID lpParameter);
 };
 
 #endif // TEACHERMAINPAGE_H

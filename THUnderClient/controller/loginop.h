@@ -6,9 +6,11 @@
 #include "../model/client.h"
 #include "../model/adminclient.h"
 #include "../model/teacherclient.h"
+#include "../model/stuclient.h"
 
 #include "../controller/adminop.h"
 #include "../controller/teacherop.h"
+#include "../controller/stuop.h"
 
 #include "../view/adminmainpage.h"
 #include "../view/teachermainpage.h"

@@ -14,5 +14,7 @@ public:
     Teacherop& operator = (const Teacherop&) = delete;
     
     void send_audiopiece(string&);
-    QByteArray receive_audiopiece();
+    string receive_msg();
+    void randcall();
+    void endcall();
 };

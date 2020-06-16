@@ -19,15 +19,6 @@ dboperator::~dboperator() {
     sqlite3_close(this->db);
 }
 
-dboperator::dboperator(const dboperator& x) {
-    this->db = x.db;
-}
-
-dboperator& dboperator::operator = (const dboperator& x) {
-    this->db = x.db;
-    return *this;
-}
-
 unsigned dboperator::add_client(const char* username,
                                const char* pswd,
                                const CLT_TYPE& type) {
