@@ -1,0 +1,25 @@
+#ifndef ANSPROBDIALOG_H
+#define ANSPROBDIALOG_H
+
+#include <QDialog>
+#include "../controller/stuop.h"
+
+namespace Ui {
+class AnsProbDialog;
+}
+
+class AnsProbDialog : public QDialog
+{
+    Q_OBJECT
+
+public:
+    explicit AnsProbDialog(QWidget *parent = nullptr,
+                           Stuop* stuop = nullptr, string msg = "");
+    ~AnsProbDialog();
+
+private:
+    Ui::AnsProbDialog *ui;
+    Stuop* stuop;
+};
+
+#endif // ANSPROBDIALOG_H

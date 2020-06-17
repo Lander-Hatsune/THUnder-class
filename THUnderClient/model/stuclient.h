@@ -7,4 +7,5 @@ public:
     ~Stuclient();
     void send_audiopiece(string&);
     string receive_msg();
+    void send_ans(const string&, const unsigned&);
 };

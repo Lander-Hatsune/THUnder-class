@@ -23,3 +23,7 @@ const string AUDIO_SHUT = ":AS:";
 const string AUDIO_MSG = ":AU:";
 
 const string VID_MSG = ":VD:";
+
+const string RAND_CALL = ":RC:";
+const string CALLED_USERNAME = ":CU:";
+const string RAND_CALL_OVER = ":RO:";

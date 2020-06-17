@@ -74,7 +74,7 @@ void TeacherMainPage::init_audio(const QAudioDeviceInfo& deviceInfo)
     this->m_audioInput.reset(new QAudioInput(deviceInfo, format));
     this->m_audioOutput.reset(new QAudioOutput(deviceInfo, format));
     cout << "input and output set" << endl;
-    m_audioOutput->start();
+    this->m_outputIOdevice = this->m_audioOutput->start();
 
 }
 
@@ -111,15 +111,18 @@ DWORD WINAPI TeacherMainPage::receive_msg(LPVOID lpParameter)
     TeacherMainPage* cur = (TeacherMainPage*) lpParameter;
     while (true) {
         string msg = cur->teacherop->receive_msg();
-        cout << "receive msg" << endl;
         if (msg.empty() || msg == "\n") continue;
         string msg_head = msg.substr(0, 4);
+        cout << "received msg, " << msg.length() << ", " << msg_head << endl;
         if (msg_head == AUDIO_MSG) {
-            cout << "audio message!" << msg.length() << endl;
+            cout << "audio message!" << endl;
             msg = msg.substr(0, msg.length() - 1);
             msg = msg.substr(4);
+            printf("sliced\n");
             QByteArray audio_piece = QByteArray::fromStdString(msg);
+            printf("converted\n");
             cur->m_outputIOdevice->write(audio_piece);
+            printf("played\n");
         }
         else if (msg_head == CALLED_USERNAME) {
             msg = msg.substr(0, msg.length() - 1);
@@ -140,7 +143,14 @@ void TeacherMainPage::on_b_randcall_clicked()
         this->teacherop->endcall();
         ui->lbl_called->setText("");
         ui->b_randcall->setText("Random roll call");
-        this->m_audioOutput->suspend();
     }
 }
 
+
+void TeacherMainPage::on_b_pushprob_clicked()
+{
+    PushProbDialog* pushprobdialog = new PushProbDialog(nullptr, this->teacherop);
+    pushprobdialog->setWindowTitle("Push problem (teacher mode (THUnder class))");
+    pushprobdialog->setWindowFlag(Qt::WindowStaysOnTopHint);
+    pushprobdialog->show();
+}

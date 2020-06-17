@@ -1,0 +1,17 @@
+#include "ansprobdialog.h"
+#include "ui_ansprobdialog.h"
+
+AnsProbDialog::AnsProbDialog(QWidget *parent, Stuop* stuop, string msg) :
+    QDialog(parent),
+    ui(new Ui::AnsProbDialog)
+{
+    ui->setupUi(this);
+    this->stuop = stuop;
+
+    this->ui->tb_a->setText();
+}
+
+AnsProbDialog::~AnsProbDialog()
+{
+    delete ui;
+}

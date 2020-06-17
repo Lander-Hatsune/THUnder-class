@@ -23,3 +23,8 @@ void Teacherclient::randcall() {
 void Teacherclient::endcall() {
     this->sock.SendLine(RAND_CALL_OVER);
 }
+
+void Teacherclient::send_prob(string prob, string ans, string r_ans) {
+    cout << "sent: " << PUSH_PROB + prob + ":" + ans + ":" + r_ans;
+    this->sock.SendLine(PUSH_PROB + prob + ":" + ans + ":" + r_ans);
+}

@@ -5,9 +5,9 @@
 #include <QAudioInput>
 #include <QAudioOutput>
 #include <QByteArray>
-#include <QTimer>
 #include <QString>
-#include <process.h>
+#include <windows.h>
+#include "ansprobdialog.h"
 #include "../controller/stuop.h"
 
 namespace Ui {

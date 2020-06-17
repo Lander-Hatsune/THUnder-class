@@ -5,13 +5,16 @@ using std::string;
 
 class User {
 private:
+    string username;
+    string pswd;
     unsigned type;
     unsigned number;
     Socket* sock;
     bool is_online;
     
 public:
-    User(unsigned, unsigned, Socket*);
+    const string* username_w;
+    User(string, string, unsigned, unsigned, Socket*);
     ~User();
     User(User&) = delete;
     User& operator = (User&) = delete;

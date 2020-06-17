@@ -21,3 +21,7 @@ void Teacherop::randcall() {
 void Teacherop::endcall() {
     this->teacherclient->endcall();
 }
+
+void Teacherop::send_prob(string prob, string ans, string right_ans) {
+    this->teacherclient->send_prob(prob, ans, right_ans);
+}

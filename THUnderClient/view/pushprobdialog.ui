@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>PushProbDialog</class>
+ <widget class="QDialog" name="PushProbDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1096</width>
+    <height>499</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="Line" name="line">
+   <property name="geometry">
+    <rect>
+     <x>620</x>
+     <y>10</y>
+     <width>20</width>
+     <height>471</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Vertical</enum>
+   </property>
+  </widget>
+  <widget class="QTableWidget" name="tbl_result">
+   <property name="geometry">
+    <rect>
+     <x>650</x>
+     <y>30</y>
+     <width>421</width>
+     <height>191</height>
+    </rect>
+   </property>
+   <row>
+    <property name="text">
+     <string>A</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>B</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>C</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>D</string>
+    </property>
+   </row>
+   <column>
+    <property name="text">
+     <string>students</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>number</string>
+    </property>
+   </column>
+  </widget>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>602</width>
+     <height>471</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0" colspan="2">
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string>Problem</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0" colspan="2">
+     <widget class="QLabel" name="label_3">
+      <property name="text">
+       <string>(Please enter the problem below)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0" colspan="4">
+     <widget class="QTextEdit" name="te_prob"/>
+    </item>
+    <item row="3" column="0" colspan="2">
+     <widget class="QLabel" name="label_2">
+      <property name="text">
+       <string>Answer</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="0" colspan="3">
+     <widget class="QLabel" name="label_4">
+      <property name="text">
+       <string>(Please toggle the right answer(s) below)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="0">
+     <widget class="QCheckBox" name="cb_a">
+      <property name="text">
+       <string>A</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="1">
+     <widget class="QPlainTextEdit" name="te_a"/>
+    </item>
+    <item row="5" column="2">
+     <widget class="QCheckBox" name="cb_b">
+      <property name="text">
+       <string>B</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="0">
+     <widget class="QCheckBox" name="cb_c">
+      <property name="text">
+       <string>C</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="1">
+     <widget class="QPlainTextEdit" name="te_c"/>
+    </item>
+    <item row="6" column="2">
+     <widget class="QCheckBox" name="cb_d">
+      <property name="text">
+       <string>D</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="3">
+     <widget class="QPlainTextEdit" name="te_d"/>
+    </item>
+    <item row="5" column="3">
+     <widget class="QPlainTextEdit" name="te_b"/>
+    </item>
+    <item row="0" column="3">
+     <widget class="QPushButton" name="b_push">
+      <property name="text">
+       <string>Push</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="3">
+     <widget class="QPushButton" name="b_pull">
+      <property name="text">
+       <string>Pull</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>650</x>
+     <y>0</y>
+     <width>297</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Result</string>
+   </property>
+  </widget>
+  <widget class="QTableWidget" name="tbl_result_2">
+   <property name="geometry">
+    <rect>
+     <x>650</x>
+     <y>240</y>
+     <width>421</width>
+     <height>231</height>
+    </rect>
+   </property>
+   <column>
+    <property name="text">
+     <string>student</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>options</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>time</string>
+    </property>
+   </column>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

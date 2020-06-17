@@ -14,4 +14,5 @@ public:
 
     string receive_msg();
     void send_audiopiece(string&);
+    void send_ans(const string&, const unsigned&);
 };

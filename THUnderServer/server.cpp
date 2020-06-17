@@ -90,7 +90,7 @@ unsigned __stdcall Server::Answer(void* x) {
             string username = str.substr(0, divpos);
             string new_username = str.substr(divpos + 1);
             unsigned ret = db.change_username(username.c_str(),
-                                                  new_username.c_str());
+                                              new_username.c_str());
             printf("sent:%d\n", ret);
             the_sock->SendLine(to_string(ret));
         }
@@ -105,11 +105,13 @@ unsigned __stdcall Server::Answer(void* x) {
             the_sock->SendLine(to_string(isvalid));
         }
         else if (msghead == RAND_CALL) {
-            int num = rand() % Class_Members.size();
-            while (num == the_number)
+            unsigned num = rand() % Class_Members.size();
+            while (Class_Members[num] == nullptr || num == the_number)
                 num = rand() % Class_Members.size();
             printf("rand call: %d\n", num);
-            cout << "username: " << *Class_Members[num]->username_w << endl;
+            cout << "username: "
+                 << *Class_Members[num]->username_w << endl;
+            Sleep(10);
             Class_Members[num]->sendmsg(AUDIO_OPEN);
             the_sock->SendLine(CALLED_USERNAME
                                + *Class_Members[num]->username_w);
@@ -119,32 +121,70 @@ unsigned __stdcall Server::Answer(void* x) {
             if (lastcalled < 0 || lastcalled >= Class_Members.size()) {
                 printf("unable to shut the called student %d\n",
                        lastcalled);
+                Sleep(10);
             }
             Class_Members[lastcalled]->sendmsg(AUDIO_SHUT);
             printf("shut %d\n", lastcalled);
+            Sleep(10);            
             lastcalled = -1;
         }
         else if (msghead == AUDIO_MSG) {
+            str = str.substr(0, str.length() - 1);
             printf("audio message!\n");
+            Sleep(10);            
             for (int i = 0; i < Class_Members.size(); i++) {
-                if (the_number == *Class_Members[i]->number_w ||
-                    !Class_Members[i])
+                if (Class_Members[i] == nullptr ||
+                    the_number == *Class_Members[i]->number_w)
                     continue;
                 else Class_Members[i]->sendmsg(str);
                 printf("send to %d\n", i);
+                Sleep(10);                
             }
         }
         else if (msghead == VID_MSG) {
+            str = str.substr(0, str.length() - 1);
             for (int i = 0; i < Class_Members.size(); i++) {
-                if (the_number == *Class_Members[i]->number_w ||
-                    !Class_Members[i])
+                if (Class_Members[i] == nullptr ||
+                    the_number == *Class_Members[i]->number_w)
                     continue;
                 else Class_Members[i]->sendmsg(VID_MSG + str);
+            }
+        }
+        else if (msghead == PUSH_PROB) {
+            str = str.substr(0, str.length() - 1);
+            printf("problem sent %d\n", str.length());
+            for (int i = 0; i < Class_Members.size(); i++) {
+                if (Class_Members[i] == nullptr ||
+                    the_number == *Class_Members[i]->number_w)
+                    continue;
+                else Class_Members[i]->sendmsg(str);
+            }
+        }
+        else if (msghead == ANS_PROB) {
+            str = str.substr(4);
+            str = str.substr(0, str.length() - 1);
+            for (int i = 0; i < Class_Members.size(); i++) {
+                if (Class_Members[i] == nullptr ||
+                    *Class_Members[i]->type_w != TEACHER)
+                    continue;
+                printf("found teacher");
+                Class_Members[i]->sendmsg(ANS_PROB + the_username
+                                          + ":" + str);
+            }
+        }
+        else if (msghead == PULL_PROB) {
+            printf("pull prob sent\n");
+            for (int i = 0; i < Class_Members.size(); i++) {
+                if (Class_Members[i] == nullptr ||
+                    *Class_Members[i]->number_w == the_number)
+                    continue;
+                Class_Members[i]->sendmsg(PULL_PROB);
             }
         }
     }
     delete member;
     Class_Members[the_number] = nullptr;
     printf("connection %d offline\n", the_number);
+    Sleep(10);    
 }
 

@@ -12,6 +12,11 @@ string Stuclient::receive_msg() {
     return this->sock.ReceiveLine();
 }
 
+void Stuclient::send_ans(const string& ans, const unsigned& time)
+{
+    this->sock.SendLine(ANS_PROB + ans + ":" + to_string(time));
+}
+
 void Stuclient::send_audiopiece(string& audio) {
     //cout << "send: " << AUDIO_MSG + audio << endl;
     cout << "send audio: " << (AUDIO_MSG + audio).length() << endl;

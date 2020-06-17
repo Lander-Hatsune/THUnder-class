@@ -17,4 +17,5 @@ public:
     string receive_msg();
     void randcall();
     void endcall();
+    void send_prob(string, string, string);
 };

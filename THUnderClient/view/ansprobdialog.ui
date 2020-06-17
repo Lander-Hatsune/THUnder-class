@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AnsProbDialog</class>
+ <widget class="QDialog" name="AnsProbDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>736</width>
+    <height>635</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>20</y>
+     <width>72</width>
+     <height>15</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Problem</string>
+   </property>
+  </widget>
+  <widget class="QTextBrowser" name="tb_prob">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>50</y>
+     <width>661</width>
+     <height>221</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QTextBrowser" name="tb_a">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>300</y>
+     <width>251</width>
+     <height>91</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QTextBrowser" name="tb_b">
+   <property name="geometry">
+    <rect>
+     <x>440</x>
+     <y>300</y>
+     <width>251</width>
+     <height>91</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QTextBrowser" name="tb_c">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>440</y>
+     <width>251</width>
+     <height>91</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QTextBrowser" name="tb_d">
+   <property name="geometry">
+    <rect>
+     <x>440</x>
+     <y>440</y>
+     <width>251</width>
+     <height>91</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="cb_a">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>340</y>
+     <width>41</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>A</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="cb_b">
+   <property name="geometry">
+    <rect>
+     <x>380</x>
+     <y>340</y>
+     <width>41</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>B</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="cb_c">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>480</y>
+     <width>41</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>C</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="cb_d">
+   <property name="geometry">
+    <rect>
+     <x>380</x>
+     <y>490</y>
+     <width>41</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>D</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lbl_single_multiple">
+   <property name="geometry">
+    <rect>
+     <x>31</x>
+     <y>570</y>
+     <width>511</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>The problem has ONE correct answer!</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="b_send">
+   <property name="geometry">
+    <rect>
+     <x>522</x>
+     <y>570</y>
+     <width>171</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Send the answer</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

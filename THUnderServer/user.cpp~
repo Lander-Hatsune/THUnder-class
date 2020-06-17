@@ -1,9 +1,13 @@
 #include "user.h"
 
-User::User(unsigned type, unsigned number, Socket* sock) {
+User::User(string username, string pswd, unsigned type,
+           unsigned number, Socket* sock) {
+    this->username = username;
+    this->username_w = &this->username;
+    this->pswd = pswd;
+    this->type = type;
     this->is_online = true;
     this->is_online_w = &is_online;
-    this->type = type;
     this->number = number;
     this->sock = sock;
     this->number_w = &this->number;

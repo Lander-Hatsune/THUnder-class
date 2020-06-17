@@ -85,6 +85,7 @@ void StuMainPage::get_audiodata_sent() {
     for (int i = 0; i < data.length(); i++)
         if (data_str[i] == '\n')
             data_str[i] = '\n' + 1;
+    // this->m_outputIOdevice->write(data);
     cout << "write " << data_str.length() << endl;
     //cout << data_str << endl;
     //this->m_outputIOdevice->write(data);
@@ -98,8 +99,8 @@ DWORD WINAPI StuMainPage::receive_msg(LPVOID lpParameter)
     while (true) {
         string msg = cur->stuop->receive_msg();
         if (msg.empty() || msg == "\n") continue;
-        cout << "received msg" << endl;
         string msg_head = msg.substr(0, 4);
+        cout << "received msg, " << msg.length() << ", " << msg_head << endl;
         if (msg_head == AUDIO_MSG) {
             cout << "audio message!" << msg.length() << endl;
             msg = msg.substr(0, msg.length() - 1);
@@ -118,6 +119,16 @@ DWORD WINAPI StuMainPage::receive_msg(LPVOID lpParameter)
             cout << "called over" << endl;
             cur->m_audioInput->suspend();
             cur->ui->lbl_is_muted->setText("You are muted");
+        }
+        else if (msg_head == PUSH_PROB) {
+            msg = msg.substr(4);
+            msg = msg.substr(0, msg.length() - 1);
+            AnsProbDialog* ansprobdialog = new AnsProbDialog(nullptr, cur->stuop, msg);
+            ansprobdialog->show();
+            ansprobdialog->setWindowTitle("Answer problem (student mode (THUnder class))");
+            CreateThread(nullptr, 0, ansprobdialog->receive_msg, (LPVOID)ansprobdialog, 0, nullptr);
+            cout << "thread created\n";
+            break;
         }
     }
 }

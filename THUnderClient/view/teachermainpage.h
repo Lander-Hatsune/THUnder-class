@@ -5,6 +5,8 @@
 #include <QAudioInput>
 #include <QAudioOutput>
 #include <QByteArray>
+#include <windows.h>
+#include "pushprobdialog.h"
 #include "../controller/teacherop.h"
 
 namespace Ui {
@@ -28,6 +30,8 @@ private slots:
     void get_audiodata_sent();
 
     void on_b_randcall_clicked();
+
+    void on_b_pushprob_clicked();
 
 private:
     void init_window();
