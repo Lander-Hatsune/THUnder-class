@@ -25,3 +25,8 @@ void Teacherop::endcall() {
 void Teacherop::send_prob(string prob, string ans, string right_ans) {
     this->teacherclient->send_prob(prob, ans, right_ans);
 }
+
+void Teacherop::pull_prob()
+{
+    teacherclient->pull_prob();
+}

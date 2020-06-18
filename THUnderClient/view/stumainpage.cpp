@@ -20,6 +20,7 @@ StuMainPage::StuMainPage(QWidget *parent, Stuop* stuop) :
     this->init_window();
     this->init_audio(QAudioDeviceInfo::defaultInputDevice());
     this->is_muted = true;
+    connect(this, SIGNAL(ansprob(QString)), this, SLOT(new_ansprobwindow(QString)));
     CreateThread(nullptr, 0, receive_msg, (LPVOID)this, 0, nullptr);
 }
 
@@ -78,6 +79,14 @@ void StuMainPage::on_cb_audiodevice_currentIndexChanged(int index)
     this->init_audio(ui->cb_audiodevice->itemData(index).value<QAudioDeviceInfo>());
 }
 
+void StuMainPage::new_ansprobwindow(QString msg)
+{
+    printf("slot new_ansprobwindow\n");
+    this->ansprobwindow = new AnsProbWindow(nullptr, this->stuop, msg.toStdString());
+    ansprobwindow->setWindowTitle("Answer problem (student mode (THUnder class))");
+    ansprobwindow->show();
+}
+
 void StuMainPage::get_audiodata_sent() {
     QByteArray data = this->m_inputIOdevice->read(1000); // 8000 * 16 * 4 byte/sec, 640 bytes / batch -> 1/800 sec
 
@@ -123,12 +132,13 @@ DWORD WINAPI StuMainPage::receive_msg(LPVOID lpParameter)
         else if (msg_head == PUSH_PROB) {
             msg = msg.substr(4);
             msg = msg.substr(0, msg.length() - 1);
-            AnsProbDialog* ansprobdialog = new AnsProbDialog(nullptr, cur->stuop, msg);
-            ansprobdialog->show();
-            ansprobdialog->setWindowTitle("Answer problem (student mode (THUnder class))");
-            CreateThread(nullptr, 0, ansprobdialog->receive_msg, (LPVOID)ansprobdialog, 0, nullptr);
-            cout << "thread created\n";
-            break;
+            cout << msg << endl;
+            printf("emit\n");
+            emit(cur->ansprob(QString::fromStdString(msg)));
+        }
+        else if (msg_head == PULL_PROB) {
+            cur->ansprobwindow->close();
+            cout << "close" << endl;
         }
     }
 }

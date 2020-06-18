@@ -130,6 +130,13 @@ DWORD WINAPI TeacherMainPage::receive_msg(LPVOID lpParameter)
             QString show_called_username = QString::fromStdString("Called: " + msg);
             cur->ui->lbl_called->setText(show_called_username);
         }
+        else if (msg_head == ANS_PROB) {
+            msg = msg.substr(4);
+            msg = msg.substr(0, msg.length() - 1);
+            printf("got answer, emit\n");
+            cout << msg << endl;
+            emit cur->answer_got(QString::fromStdString(msg));
+        }
     }
 }
 
@@ -151,6 +158,7 @@ void TeacherMainPage::on_b_pushprob_clicked()
 {
     PushProbDialog* pushprobdialog = new PushProbDialog(nullptr, this->teacherop);
     pushprobdialog->setWindowTitle("Push problem (teacher mode (THUnder class))");
-    pushprobdialog->setWindowFlag(Qt::WindowStaysOnTopHint);
+    // pushprobdialog->setWindowFlag(Qt::WindowStaysOnTopHint);
     pushprobdialog->show();
+    connect(this, SIGNAL(answer_got(QString)), pushprobdialog, SLOT(refresh_tables(QString)));
 }

@@ -2,7 +2,6 @@
 #include <string>
 using std::string;
 
-#define CLT_TYPE unsigned
 #define ADMIN 1
 #define TEACHER 2
 #define STU 3

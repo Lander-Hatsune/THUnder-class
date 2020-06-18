@@ -22,15 +22,14 @@ public:
                              Teacherop* teacherop = nullptr);
     ~TeacherMainPage();
 
-
+signals:
+    void answer_got(QString);
 
 private slots:
     void on_b_togglestate_clicked();
     void on_cb_audiodevice_currentIndexChanged(int index);
     void get_audiodata_sent();
-
     void on_b_randcall_clicked();
-
     void on_b_pushprob_clicked();
 
 private:

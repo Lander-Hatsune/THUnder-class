@@ -7,7 +7,7 @@
 #include <QByteArray>
 #include <QString>
 #include <windows.h>
-#include "ansprobdialog.h"
+#include "ansprobwindow.h"
 #include "../controller/stuop.h"
 
 namespace Ui {
@@ -22,9 +22,13 @@ public:
     explicit StuMainPage(QWidget *parent = nullptr, Stuop* stuop = nullptr);
     ~StuMainPage();
 
+signals:
+    void ansprob(QString);
+
 private slots:
     void get_audiodata_sent();
     void on_cb_audiodevice_currentIndexChanged(int index);
+    void new_ansprobwindow(QString msg);
 
 private:
     void init_window();
@@ -38,6 +42,7 @@ private:
     QIODevice* m_outputIOdevice;
     static DWORD WINAPI receive_msg(LPVOID lpParameter);
     bool is_muted;
+    AnsProbWindow* ansprobwindow;
 };
 
 #endif // STUMAINPAGE_H

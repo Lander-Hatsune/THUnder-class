@@ -1,46 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>AnsProbDialog</class>
- <widget class="QDialog" name="AnsProbDialog">
+ <class>AnsProbWindow</class>
+ <widget class="QWidget" name="AnsProbWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>736</width>
-    <height>635</height>
+    <width>754</width>
+    <height>641</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Form</string>
   </property>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>21</x>
-     <y>21</y>
-     <width>56</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Problem</string>
-   </property>
-  </widget>
-  <widget class="QTextBrowser" name="tb_prob">
-   <property name="geometry">
-    <rect>
-     <x>21</x>
-     <y>42</y>
-     <width>699</width>
-     <height>291</height>
-    </rect>
-   </property>
-  </widget>
   <widget class="QLabel" name="lbl_single_multiple">
    <property name="geometry">
     <rect>
-     <x>21</x>
-     <y>582</y>
+     <x>30</x>
+     <y>591</y>
      <width>280</width>
      <height>16</height>
     </rect>
@@ -52,8 +29,8 @@
   <widget class="QPushButton" name="b_send">
    <property name="geometry">
     <rect>
-     <x>591</x>
-     <y>582</y>
+     <x>600</x>
+     <y>591</y>
      <width>129</width>
      <height>28</height>
     </rect>
@@ -62,11 +39,21 @@
     <string>Send the answer</string>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QTextBrowser" name="tb_prob">
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>360</y>
+     <y>51</y>
+     <width>699</width>
+     <height>291</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>39</x>
+     <y>359</y>
      <width>681</width>
      <height>211</height>
     </rect>
@@ -78,9 +65,6 @@
        <string>A</string>
       </property>
      </widget>
-    </item>
-    <item row="0" column="3">
-     <widget class="QTextBrowser" name="tb_b"/>
     </item>
     <item row="0" column="2">
      <widget class="QCheckBox" name="cb_b">
@@ -109,10 +93,26 @@
     <item row="1" column="1">
      <widget class="QTextBrowser" name="tb_c"/>
     </item>
+    <item row="0" column="3">
+     <widget class="QTextBrowser" name="tb_b"/>
+    </item>
     <item row="0" column="1">
-     <widget class="QTextBrowser" name="tb_a"/>
+     <widget class="QTextBrowser" name="tb_a_2"/>
     </item>
    </layout>
+  </widget>
+  <widget class="QLabel" name="lbl_prob">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>30</y>
+     <width>56</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Problem</string>
+   </property>
   </widget>
  </widget>
  <resources/>

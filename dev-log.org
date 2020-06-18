@@ -107,6 +107,8 @@ old problem of MinGW, already fixed in newest releases.
 change the main func a little bit then correct it back
 ** 字体异常
 尝试删除字体，重启qt解决
+** 在线程函数里不要new widget/dialog
+- emit a signal out.
 * todolist [41%]
 - [X] 1.1 login, admin
 - [X] 1.2 audio device switching

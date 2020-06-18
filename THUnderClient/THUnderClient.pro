@@ -17,7 +17,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    view/ansprobdialog.cpp \
+    view/ansprobwindow.cpp \
     controller/stuop.cpp \
     main.cpp \
     model/Socket.cpp \
@@ -35,7 +35,7 @@ SOURCES += \
     view/loginpage.cpp
 
 HEADERS += \
-    view/ansprobdialog.h \
+    view/ansprobwindow.h \
     definitions.h \
     model/Socket.h \
     model/adminclient.h \
@@ -53,7 +53,7 @@ HEADERS += \
     view/loginpage.h
 
 FORMS += \
-    view/ansprobdialog.ui \
+    view/ansprobwindow.ui \
     view/pushprobdialog.ui \
     view/stumainpage.ui \
     view/teachermainpage.ui \

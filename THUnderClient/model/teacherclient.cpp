@@ -26,5 +26,14 @@ void Teacherclient::endcall() {
 
 void Teacherclient::send_prob(string prob, string ans, string r_ans) {
     cout << "sent: " << PUSH_PROB + prob + ":" + ans + ":" + r_ans;
+    for (int i = 0; i < prob.length(); i++) {
+        if (prob[i] == '\n') prob[i] = ' ';
+    }
     this->sock.SendLine(PUSH_PROB + prob + ":" + ans + ":" + r_ans);
+}
+
+void Teacherclient::pull_prob()
+{
+    cout << "pull" << endl;
+    sock.SendLine(PULL_PROB);
 }

@@ -6,6 +6,7 @@ User::User(string username, string pswd, unsigned type,
     this->username_w = &this->username;
     this->pswd = pswd;
     this->type = type;
+    this->type_w = &type;
     this->is_online = true;
     this->is_online_w = &is_online;
     this->number = number;

@@ -18,4 +18,5 @@ public:
     void randcall();
     void endcall();
     void send_prob(string, string, string);
+    void pull_prob();
 };

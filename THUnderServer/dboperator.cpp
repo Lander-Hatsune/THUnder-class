@@ -30,7 +30,7 @@ dboperator& dboperator::operator = (const dboperator& x) {
 
 unsigned dboperator::add_client(const char* username,
                                const char* pswd,
-                               const CLT_TYPE& type) {
+                               const unsigned& type) {
     // exclude existed username
     if (this->exist(username)) return 1;
     
@@ -130,7 +130,7 @@ unsigned dboperator::change_pswd(const char* username,
     }
 }
 
-CLT_TYPE dboperator::checktype(const char* username,
+unsigned dboperator::checktype(const char* username,
                           const char* pswd) const {
     char* sql = new char[200];
     memset(sql, 0, sizeof(sql));

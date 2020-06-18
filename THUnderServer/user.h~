@@ -14,6 +14,7 @@ private:
     
 public:
     const string* username_w;
+    const unsigned* type_w;
     User(string, string, unsigned, unsigned, Socket*);
     ~User();
     User(User&) = delete;

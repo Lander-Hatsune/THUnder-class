@@ -152,6 +152,7 @@ unsigned __stdcall Server::Answer(void* x) {
         }
         else if (msghead == PUSH_PROB) {
             str = str.substr(0, str.length() - 1);
+            printf("problem sent %d\n", str.length());
             for (int i = 0; i < Class_Members.size(); i++) {
                 if (Class_Members[i] == nullptr ||
                     the_number == *Class_Members[i]->number_w)
@@ -172,6 +173,7 @@ unsigned __stdcall Server::Answer(void* x) {
             }
         }
         else if (msghead == PULL_PROB) {
+            printf("pull prob sent\n");
             for (int i = 0; i < Class_Members.size(); i++) {
                 if (Class_Members[i] == nullptr ||
                     *Class_Members[i]->number_w == the_number)

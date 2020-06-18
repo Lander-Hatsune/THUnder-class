@@ -38,7 +38,7 @@ unsigned __stdcall Server::Answer(void* x) {
 
     string the_username = str.substr(0, divpos);
     string the_pswd = str.substr(divpos + 1);
-    CLT_TYPE the_type =
+    unsigned the_type =
         db.checktype(the_username.c_str(), the_pswd.c_str());
     unsigned the_number = Class_Members.size();
 
@@ -47,13 +47,26 @@ unsigned __stdcall Server::Answer(void* x) {
 
     User* member = new User(the_username, the_pswd,
                             the_type, the_number, the_sock);
-
+    printf("new member, type %d, or %d\n", the_type, *(member->type_w));
     if (the_type == 0) {
         delete member;
     }
     else if (the_type != 1) {
+        printf("pushed into vector\n");
         Class_Members.push_back(member);
     }
+
+    printf("check all members:\n");
+    for (int i = 0; i < Class_Members.size(); i++) {
+        if (Class_Members[i] == nullptr) {
+            printf("number %d is offline\n", i);
+        } else {
+            cout << "number: " << *(Class_Members[i]->number_w) << ", ";
+            cout << "username: " << *(Class_Members[i]->username_w) << ", ";
+            cout << "type: " << *(Class_Members[i]->type_w) << endl;
+        }
+    }
+    
     unsigned lastcalled = -1;    
     while (true) {
         string str = the_sock->ReceiveLine();
@@ -67,7 +80,7 @@ unsigned __stdcall Server::Answer(void* x) {
         
         if (msghead == ADD_CLIENT) {
             str = str.substr(4);
-            CLT_TYPE type = str[str.length() - 1] - '0';
+            unsigned type = str[str.length() - 1] - '0';
             str = str.substr(0, str.length() - 2);
             unsigned divpos = str.rfind(":");
             string username = str.substr(0, divpos);
@@ -132,9 +145,10 @@ unsigned __stdcall Server::Answer(void* x) {
             str = str.substr(0, str.length() - 1);
             printf("audio message!\n");
             Sleep(10);            
+
             for (int i = 0; i < Class_Members.size(); i++) {
                 if (Class_Members[i] == nullptr ||
-                    the_number == *Class_Members[i]->number_w)
+                    the_number == *(Class_Members[i]->number_w))
                     continue;
                 else Class_Members[i]->sendmsg(str);
                 printf("send to %d\n", i);
@@ -145,7 +159,7 @@ unsigned __stdcall Server::Answer(void* x) {
             str = str.substr(0, str.length() - 1);
             for (int i = 0; i < Class_Members.size(); i++) {
                 if (Class_Members[i] == nullptr ||
-                    the_number == *Class_Members[i]->number_w)
+                    the_number == *(Class_Members[i]->number_w))
                     continue;
                 else Class_Members[i]->sendmsg(VID_MSG + str);
             }
@@ -153,19 +167,24 @@ unsigned __stdcall Server::Answer(void* x) {
         else if (msghead == PUSH_PROB) {
             str = str.substr(0, str.length() - 1);
             printf("problem sent %d\n", str.length());
+            cout << str << endl;
             for (int i = 0; i < Class_Members.size(); i++) {
                 if (Class_Members[i] == nullptr ||
-                    the_number == *Class_Members[i]->number_w)
+                    the_number == *(Class_Members[i]->number_w))
                     continue;
                 else Class_Members[i]->sendmsg(str);
             }
         }
         else if (msghead == ANS_PROB) {
+            printf("got an answer\n");
             str = str.substr(4);
             str = str.substr(0, str.length() - 1);
             for (int i = 0; i < Class_Members.size(); i++) {
+                
+                
+                    
                 if (Class_Members[i] == nullptr ||
-                    *Class_Members[i]->type_w != TEACHER)
+                    *(Class_Members[i]->type_w) != TEACHER)
                     continue;
                 printf("found teacher");
                 Class_Members[i]->sendmsg(ANS_PROB + the_username
@@ -176,7 +195,7 @@ unsigned __stdcall Server::Answer(void* x) {
             printf("pull prob sent\n");
             for (int i = 0; i < Class_Members.size(); i++) {
                 if (Class_Members[i] == nullptr ||
-                    *Class_Members[i]->number_w == the_number)
+                    *(Class_Members[i]->number_w) == the_number)
                     continue;
                 Class_Members[i]->sendmsg(PULL_PROB);
             }

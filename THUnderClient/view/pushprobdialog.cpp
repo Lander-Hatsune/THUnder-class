@@ -39,48 +39,46 @@ void PushProbDialog::on_b_push_clicked()
     teacherop->send_prob(prob, ans, right_ans);
 }
 
-DWORD WINAPI PushProbDialog::receive_msg(LPVOID lpParameter)
+void PushProbDialog::on_b_pull_clicked()
 {
-    PushProbDialog* cur = (PushProbDialog*) lpParameter;
-    while (true) {
-        string msg = cur->teacherop->receive_msg();
-        if (msg.empty() || msg == "\n") continue;
-        string msg_head = msg.substr(0, 4);
-        cout << "received msg, " << msg.length() << ", " << msg_head << endl;
-        if (msg_head == ANS_PROB) {
-            msg = msg.substr(4);
-            msg = msg.substr(0, msg.length() - 1);
-            unsigned div = msg.find(':');
-            string username = msg.substr(0, div);
-            msg = msg.substr(div + 1);
-            div = msg.find(':');
-            string ans = msg.substr(0, div);
-            string time = msg.substr(div + 1);
+    teacherop->pull_prob();
+    ui->lbl_prob->setText("Problem (pulled)");
+}
 
-            // insert new student to table: result
-            for (int i = 0; i < ans.length(); i++) {
-                if (ans[i] != '0') {
-                    QTableWidgetItem* item = cur->ui->tbl_result->item(i, 0);
-                    QString oritext = item->text();
-                    oritext = oritext + QString::fromStdString(username + ", ");
-                    item->setText(oritext);
+void PushProbDialog::refresh_tables(QString qmsg)
+{
+    string msg = qmsg.toStdString();
+    cout << "refresh msg: " << msg << endl;
+    unsigned div = msg.find(':');
+    QString username = QString::fromStdString(msg.substr(0, div));
+    msg = msg.substr(div + 1);
+    div = msg.find(':');
+    QString ans = QString::fromStdString(msg.substr(0, div));
+    QString time = QString::fromStdString(msg.substr(div + 1));
 
-                    item = cur->ui->tbl_result->item(i, 1);
-                    oritext = item->text();
-                    unsigned orinumber = oritext.toUInt();
-                    orinumber += 1;
-                    item->setText(QString::fromStdString(to_string(orinumber)));
-                }
-            }
+    // insert new student to table: result
+    for (int i = 0; i < 4; i++) {
+        if (ans[i] != '0') {
+            QTableWidgetItem* item1 = this->ui->tbl_result->item(i, 0);
+            QString oritext = item1->text();
+            item1->setText(oritext + username + ", ");
 
-            // insert new student to table: result_2
-            cur->ui->tbl_result_2->insertRow(0);
-            QTableWidgetItem* item = cur->ui->tbl_result_2->item(0, 0);
-            item->setText(QString::fromStdString(username));
-            item = cur->ui->tbl_result_2->item(0, 1);
-            item->setText(QString::fromStdString(ans));
-            item = cur->ui->tbl_result_2->item(0, 2);
-            item->setText(QString::fromStdString(time));
+            QTableWidgetItem* item2 = this->ui->tbl_result->item(i, 1);
+            oritext = item2->text();
+            unsigned orinumber = oritext.toUInt();
+            orinumber += 1;
+            item2->setText(QString::fromStdString(to_string(orinumber)));
         }
     }
+    printf("refreshed table 1\n");
+
+    // insert new student to table: result_2
+    this->ui->tbl_result_2->insertRow(0);
+    QTableWidgetItem* item2_1 = new QTableWidgetItem(username);
+    this->ui->tbl_result_2->setItem(0, 0, item2_1);
+    QTableWidgetItem* item2_2 = new QTableWidgetItem(ans);
+    this->ui->tbl_result_2->setItem(0, 1, item2_2);
+    QTableWidgetItem* item2_3 = new QTableWidgetItem(time);
+    this->ui->tbl_result_2->setItem(0, 2, item2_3);
+    printf("tables all refreshed\n");
 }

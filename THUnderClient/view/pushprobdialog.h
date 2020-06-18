@@ -18,6 +18,8 @@ public:
 
 private slots:
     void on_b_push_clicked();
+    void on_b_pull_clicked();
+    void refresh_tables(QString);
 
 private:
     Ui::PushProbDialog *ui;

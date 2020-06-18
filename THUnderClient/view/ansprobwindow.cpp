@@ -1,20 +1,17 @@
-#include "ansprobdialog.h"
-#include "ui_ansprobdialog.h"
-#include <string>
-#include <cstring>
-#include <QString>
+#include "ansprobwindow.h"
+#include "ui_ansprobwindow.h"
 #include <QDateTime>
 #include <iostream>
 using namespace std;
 
-AnsProbDialog::AnsProbDialog(QWidget *parent, Stuop* stuop, string msg, QWidget* stumainpage) :
-    QDialog(parent),
-    ui(new Ui::AnsProbDialog)
+AnsProbWindow::AnsProbWindow(QWidget *parent, Stuop* stuop, string msg) :
+    QWidget(parent),
+    ui(new Ui::AnsProbWindow)
 {
     ui->setupUi(this);
     this->stuop = stuop;
+
     this->start_time = QDateTime::currentSecsSinceEpoch();
-    printf("start time set\n");
     string prob_msg[6];
     for (int i = 0; i < 5; i++) {
         unsigned div = msg.find(':');
@@ -24,7 +21,7 @@ AnsProbDialog::AnsProbDialog(QWidget *parent, Stuop* stuop, string msg, QWidget*
     }
     cout << msg << endl;
     this->ui->tb_prob->setText(QString::fromStdString(prob_msg[0]));
-    this->ui->tb_a->setText(QString::fromStdString(prob_msg[1]));
+    this->ui->tb_a_2->setText(QString::fromStdString(prob_msg[1]));
     this->ui->tb_b->setText(QString::fromStdString(prob_msg[2]));
     this->ui->tb_c->setText(QString::fromStdString(prob_msg[3]));
     this->ui->tb_d->setText(QString::fromStdString(prob_msg[4]));
@@ -33,17 +30,16 @@ AnsProbDialog::AnsProbDialog(QWidget *parent, Stuop* stuop, string msg, QWidget*
                 "The problem has MULTIPLE correct answers!");
     else this->ui->lbl_single_multiple->setText(
                 "The problem has ONE correct answer!");
-    this->stumainpage = stumainpage;
     cout << "all set\n";
 
 }
 
-AnsProbDialog::~AnsProbDialog()
+AnsProbWindow::~AnsProbWindow()
 {
     delete ui;
 }
 
-void AnsProbDialog::on_b_send_clicked()
+void AnsProbWindow::on_b_send_clicked()
 {
     string ans = "";
     if (ui->cb_a->isChecked())
@@ -65,20 +61,4 @@ void AnsProbDialog::on_b_send_clicked()
     unsigned usedtime = QDateTime::currentSecsSinceEpoch() - this->start_time;
     stuop->send_ans(ans, usedtime);
     this->close();
-    // CreateThread
-}
-
-DWORD WINAPI AnsProbDialog::receive_msg(LPVOID lpParameter) {
-    AnsProbDialog* cur = (AnsProbDialog*) lpParameter;
-    while (true) {
-        string msg = cur->stuop->receive_msg();
-        if (msg.empty() || msg == "\n") continue;
-        string msg_head = msg.substr(0, 4);
-        cout << "received msg, " << msg.length() << ", " << msg_head << endl;
-        if (msg_head == PULL_PROB) {
-            cur->close();
-            CreateThread(nullptr, 0, cur->stumainpage->receive_msg, (LPVOID)this, 0, nullptr);
-            break;
-        }
-    }
 }
