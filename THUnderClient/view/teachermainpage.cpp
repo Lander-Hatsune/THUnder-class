@@ -27,7 +27,7 @@ TeacherMainPage::TeacherMainPage(QWidget *parent, Teacherop* teacherop) :
 
     this->screen_is_shared = false;
     this->vid_timer = new QTimer();
-    this->vid_timer->setInterval(300);
+    this->vid_timer->setInterval(200);
     vid_timer->stop();
 
     connect(this->vid_timer, SIGNAL(timeout()), this, SLOT(grab_send_window()));
@@ -126,13 +126,8 @@ void TeacherMainPage::on_cb_audiodevice_currentIndexChanged(int index)
 
 void TeacherMainPage::get_audiodata_sent() {
     QByteArray data = this->m_inputIOdevice->read(1000);
-
     string data_str = data.toStdString();
-    for (int i = 0; i < data.length(); i++)
-        if (data_str[i] == '\n')
-            data_str[i] = '\n' + 1;
     cout << "write " << data_str.length() << endl;
-    //this->m_outputIOdevice->write(data); // echo
     this->teacherop->send_audiopiece(data_str);
 }
 
@@ -141,12 +136,11 @@ DWORD WINAPI TeacherMainPage::receive_msg(LPVOID lpParameter)
     TeacherMainPage* cur = (TeacherMainPage*) lpParameter;
     while (true) {
         string msg = cur->teacherop->receive_msg();
-        if (msg.empty() || msg == "\n") continue;
+        if (msg.empty() || msg.length() < 4) continue;
         string msg_head = msg.substr(0, 4);
         cout << "received msg, " << msg.length() << ", " << msg_head << endl;
         if (msg_head == AUDIO_MSG) {
             cout << "audio message!" << endl;
-            msg = msg.substr(0, msg.length() - 1);
             msg = msg.substr(4);
             printf("sliced\n");
             QByteArray audio_piece = QByteArray::fromStdString(msg);
@@ -155,21 +149,18 @@ DWORD WINAPI TeacherMainPage::receive_msg(LPVOID lpParameter)
             printf("played\n");
         }
         else if (msg_head == CALLED_USERNAME) {
-            msg = msg.substr(0, msg.length() - 1);
             msg = msg.substr(4);
             QString show_called_username = QString::fromStdString("Called: " + msg);
             cur->ui->lbl_called->setText(show_called_username);
         }
         else if (msg_head == ANS_PROB) {
             msg = msg.substr(4);
-            msg = msg.substr(0, msg.length() - 1);
             printf("got answer, emit\n");
             cout << msg << endl;
             emit cur->answer_got(QString::fromStdString(msg));
         }
         else if (msg_head == ATT_DATA) {
             msg = msg.substr(4);
-            msg = msg.substr(0, msg.length() - 1);
 
             unsigned div = msg.find(':');
             string username = msg.substr(0, div);
@@ -223,7 +214,7 @@ void TeacherMainPage::grab_send_window()
     QBuffer buffer(&data);
     QPixmap map = screen->grabWindow((WId)this->cur_hwnd);
     map = map.scaledToWidth(500);
-    map.save(&buffer, "bmp", 20);
+    map.save(&buffer, "jpg", 10);
     teacherop->send_vid(data);
 }
 

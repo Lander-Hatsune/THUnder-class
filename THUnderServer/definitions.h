@@ -8,7 +8,7 @@ using std::string;
 #define VALID 0
 #define INVALID 1
 
-const int PORT = 4000;
+const int PORT = 20018;
 const int MAX_CLT_NUMBER = 50;
 
 const string CHECK_TYPE = ":CC:";

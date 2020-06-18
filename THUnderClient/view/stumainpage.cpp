@@ -96,13 +96,12 @@ void StuMainPage::get_audiodata_sent() {
     QByteArray data = this->m_inputIOdevice->read(1000); // 8000 * 16 * 4 byte/sec, 640 bytes / batch -> 1/800 sec
 
     string data_str = data.toStdString();
+    /*
     for (int i = 0; i < data.length(); i++)
         if (data_str[i] == '\n')
             data_str[i] = '\n' + 1;
-    // this->m_outputIOdevice->write(data);
+            */
     cout << "write " << data_str.length() << endl;
-    //cout << data_str << endl;
-    //this->m_outputIOdevice->write(data);
 
     this->stuop->send_audiopiece(data_str);
 }
@@ -112,12 +111,11 @@ DWORD WINAPI StuMainPage::receive_msg(LPVOID lpParameter)
     StuMainPage* cur = (StuMainPage*) lpParameter;
     while (true) {
         string msg = cur->stuop->receive_msg();
-        if (msg.empty() || msg == "\n") continue;
+        if (msg.empty() || msg.length() < 4) continue;
         string msg_head = msg.substr(0, 4);
         cout << "received msg, " << msg.length() << ", " << msg_head << endl;
         if (msg_head == AUDIO_MSG) {
             cout << "audio message!" << msg.length() << endl;
-            msg = msg.substr(0, msg.length() - 1);
             msg = msg.substr(4);
             QByteArray audio_piece = QByteArray::fromStdString(msg);
             cur->m_outputIOdevice->write(audio_piece);
@@ -136,7 +134,6 @@ DWORD WINAPI StuMainPage::receive_msg(LPVOID lpParameter)
         }
         else if (msg_head == PUSH_PROB) {
             msg = msg.substr(4);
-            msg = msg.substr(0, msg.length() - 1);
             cout << msg << endl;
             printf("emit\n");
             emit(cur->ansprob(QString::fromStdString(msg)));
@@ -147,7 +144,6 @@ DWORD WINAPI StuMainPage::receive_msg(LPVOID lpParameter)
         }
         else if (msg_head == VID_MSG) {
             msg = msg.substr(4);
-            msg = msg.substr(0, msg.length() - 1);
             printf("received vid %d\n", msg.length());
             QByteArray data = QByteArray::fromStdString(msg);
             QImage* img = new QImage();

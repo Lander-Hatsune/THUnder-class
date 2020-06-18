@@ -31,7 +31,6 @@ unsigned __stdcall Server::Answer(void* x) {
 
     string str;
     str = the_sock->ReceiveLine();
-    str = str.substr(0, str.length() - 1);
     cout << "received:" << str << endl;
     str = str.substr(4);
     unsigned divpos = str.rfind(":");
@@ -79,7 +78,7 @@ unsigned __stdcall Server::Answer(void* x) {
         string str = the_sock->ReceiveLine();
         printf("received %d: ", str.length());
         if (str.empty()) break;
-        if (str == "\n") continue;
+        if (str.length() < 4) continue;
         
         //str = str.substr(0, str.length() - 1);
         string msghead = str.substr(0, 4);
@@ -87,8 +86,8 @@ unsigned __stdcall Server::Answer(void* x) {
         
         if (msghead == ADD_CLIENT) {
             str = str.substr(4);
-            unsigned type = str[str.length() - 1] - '0';
-            str = str.substr(0, str.length() - 2);
+            unsigned type = str[str.length()] - '0';
+            str = str.substr(0, str.length() - 1);
             unsigned divpos = str.rfind(":");
             string username = str.substr(0, divpos);
             string pswd = str.substr(divpos + 1);
@@ -149,7 +148,6 @@ unsigned __stdcall Server::Answer(void* x) {
             lastcalled = -1;
         }
         else if (msghead == AUDIO_MSG) {
-            str = str.substr(0, str.length() - 1);
             printf("audio message!\n");
             Sleep(10);            
 
@@ -164,7 +162,6 @@ unsigned __stdcall Server::Answer(void* x) {
         }
         else if (msghead == VID_MSG) {
             str = str.substr(4);
-            str = str.substr(0, str.length() - 1);
             printf("received vid %d\n", str.length());
             for (int i = 0; i < Class_Members.size(); i++) {
                 if (Class_Members[i] == nullptr ||
@@ -174,7 +171,6 @@ unsigned __stdcall Server::Answer(void* x) {
             }
         }
         else if (msghead == PUSH_PROB) {
-            str = str.substr(0, str.length() - 1);
             printf("problem sent %d\n", str.length());
             cout << str << endl;
             for (int i = 0; i < Class_Members.size(); i++) {
@@ -187,7 +183,6 @@ unsigned __stdcall Server::Answer(void* x) {
         else if (msghead == ANS_PROB) {
             printf("got an answer\n");
             str = str.substr(4);
-            str = str.substr(0, str.length() - 1);
             for (int i = 0; i < Class_Members.size(); i++) {
                 if (Class_Members[i] == nullptr ||
                     *(Class_Members[i]->type_w) != TEACHER)

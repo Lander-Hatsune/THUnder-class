@@ -46,9 +46,6 @@ void Teacherop::get_window_title_list(vector<pair<QString, HWND> >& list)
 void Teacherop::send_vid(QByteArray& data)
 {
     string msg = data.toStdString();
-    for (int i = 0; i < msg.length(); i++) {
-        if (msg[i] == '\n') msg[i] = '\n' + 1;
-    }
     teacherclient->send_vid(msg);
 }
 

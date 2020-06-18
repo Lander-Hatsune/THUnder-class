@@ -10,7 +10,7 @@ const int STU = 3;
 const int VALID = 0;
 const int INVALID = 1;
 const string HOST = "127.0.0.1";
-const int PORT = 4000;
+const int PORT = 20018;
 
 const string CHECK_TYPE = ":CC:";
 const string ADD_CLIENT = ":CA:";

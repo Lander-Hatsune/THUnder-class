@@ -2,7 +2,6 @@
 #include <string>
 using std::string;
 
-#define CLT_TYPE unsigned
 #define ADMIN 1
 #define TEACHER 2
 #define STU 3
@@ -31,3 +30,6 @@ const string RAND_CALL_OVER = ":RO:";
 const string PUSH_PROB = ":PP:";
 const string ANS_PROB = ":PA:";
 const string PULL_PROB = ":PL:";
+
+const string ATTENTION = ":TA:";
+const string ATT_DATA = ":TD:";
