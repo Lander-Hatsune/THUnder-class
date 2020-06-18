@@ -31,6 +31,12 @@
 - <2020-06-16 周二> 
   - random roll call, stuck in the audio transmission from stu to teacher.
   - teacher broadcast: complete
+- <2020-06-18 周四>
+  - screen sharing
+  - push & ans problems
+  - sign in & record
+  - All functions done.
+  - to be optimized
     
 * GUI-Qt
 ** Notebook
