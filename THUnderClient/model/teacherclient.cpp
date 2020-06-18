@@ -1,6 +1,10 @@
 #include "teacherclient.h"
 #include <iostream>
+#include <windows.h>
 using namespace std;
+
+vector<pair<string, HWND> > _window_list;
+
 Teacherclient::Teacherclient(Client* clt): Client(*clt) {
     delete clt;
 }
@@ -36,4 +40,40 @@ void Teacherclient::pull_prob()
 {
     cout << "pull" << endl;
     sock.SendLine(PULL_PROB);
+}
+
+
+void Teacherclient::get_window_title_list(vector<pair<string, HWND> >& list)
+{
+    EnumWindows(enum_window_callback, 0);
+    for (int i = 0; i < _window_list.size(); i++) {
+        list.push_back(_window_list[i]);
+    }
+    printf("windows done\n");
+}
+
+WINBOOL Teacherclient::enum_window_callback(HWND hwnd, long long lparam)
+{
+    char buffer[128];
+    GetWindowTextA(hwnd, (LPSTR)buffer, 120);
+    string name = buffer;
+    cout << name << endl;
+    if (name.empty()) return true;
+    _window_list.push_back(make_pair(name, hwnd));
+    return true;
+}
+
+
+
+void Teacherclient::send_vid(string& msg)
+{
+    printf("sent vid %d\n", msg.length());
+    sock.SendLine(VID_MSG + msg);
+}
+
+void Teacherclient::add_record(const string& username, const string& start_time,
+                               const string& quit_time, const string& att_ratio)
+{
+    Record* rec = new Record(username, start_time, quit_time, att_ratio);
+    this->records.push_back(rec);
 }

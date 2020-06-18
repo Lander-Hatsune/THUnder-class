@@ -32,3 +32,6 @@ const string PUSH_PROB = ":PP:";
 const string ANS_PROB = ":PA:";
 const string PULL_PROB = ":PL:";
 
+const string ATTENTION = ":TA:";
+const string ATT_DATA = ":TD:";
+

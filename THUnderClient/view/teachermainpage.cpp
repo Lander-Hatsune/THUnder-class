@@ -1,13 +1,18 @@
 #include "teachermainpage.h"
 #include "ui_teachermainpage.h"
+#include "recordwindow.h"
 
 #include <string>
 #include <QString>
-using std::string;
-
+#include <QApplication>
+#include <QDesktopWidget>
+#include <QDateTime>
+#include <QBuffer>
+#include <windows.h>
+#include <vector>
 #include <iostream>
-using std::cout;
-using std::endl;
+using namespace std;
+
 
 TeacherMainPage::TeacherMainPage(QWidget *parent, Teacherop* teacherop) :
     QWidget(parent),
@@ -19,6 +24,20 @@ TeacherMainPage::TeacherMainPage(QWidget *parent, Teacherop* teacherop) :
     this->init_audio(QAudioDeviceInfo::defaultInputDevice());
     this->is_class_begin = false;
     CreateThread(nullptr, 0, receive_msg, (LPVOID)this, 0, nullptr);
+
+    this->screen_is_shared = false;
+    this->vid_timer = new QTimer();
+    this->vid_timer->setInterval(300);
+    vid_timer->stop();
+
+    connect(this->vid_timer, SIGNAL(timeout()), this, SLOT(grab_send_window()));
+    printf("connect timer\n");
+    this->cur_hwnd = (HWND) QApplication::desktop()->winId();
+    printf("desktop id\n");
+    this->window_title_list.push_back(make_pair("desktop", cur_hwnd));
+    this->screen = QApplication::primaryScreen();
+    printf("initialized\n");
+
 }
 
 TeacherMainPage::~TeacherMainPage()
@@ -37,8 +56,15 @@ void TeacherMainPage::on_b_togglestate_clicked()
                 this, SLOT(get_audiodata_sent()));
         this->m_outputIOdevice = this->m_audioOutput->start();
     } else {
+        this->vid_timer->stop();
         ui->b_togglestate->setText("Class begin");
         this->m_audioInput->suspend();
+        this->hide();
+        vector<Record*> records;
+        teacherop->get_records(records);
+        printf("got records %d\n", records.size());
+        RecordWindow* recordwindow = new RecordWindow(nullptr, records);
+        recordwindow->show();
     }
 }
 
@@ -52,6 +78,11 @@ void TeacherMainPage::init_window()
         if (deviceInfo != default_deviceinfo)
             ui->cb_audiodevice->addItem(deviceInfo.deviceName(),
                                         QVariant::fromValue(deviceInfo));
+    }
+
+    this->teacherop->get_window_title_list(window_title_list);
+    for (int i = 0; i < window_title_list.size(); i++) {
+        ui->cb_vidwindow->addItem(window_title_list[i].first);
     }
 }
 
@@ -70,12 +101,11 @@ void TeacherMainPage::init_audio(const QAudioDeviceInfo& deviceInfo)
         format = deviceInfo.nearestFormat(format);
     }
 
-    cout << "tryna set input and output" << endl;
+    cout << "tryna set audio input and output" << endl;
     this->m_audioInput.reset(new QAudioInput(deviceInfo, format));
     this->m_audioOutput.reset(new QAudioOutput(deviceInfo, format));
     cout << "input and output set" << endl;
     this->m_outputIOdevice = this->m_audioOutput->start();
-
 }
 
 void TeacherMainPage::stop_audio()
@@ -137,6 +167,28 @@ DWORD WINAPI TeacherMainPage::receive_msg(LPVOID lpParameter)
             cout << msg << endl;
             emit cur->answer_got(QString::fromStdString(msg));
         }
+        else if (msg_head == ATT_DATA) {
+            msg = msg.substr(4);
+            msg = msg.substr(0, msg.length() - 1);
+
+            unsigned div = msg.find(':');
+            string username = msg.substr(0, div);
+            msg = msg.substr(div + 1);
+
+            div = msg.find(':');
+            quint32 enter_time = atoi(msg.substr(0, div).c_str());
+            string str_enter = QDateTime::fromSecsSinceEpoch(enter_time).toString().toStdString();
+            msg = msg.substr(div + 1);
+
+            div = msg.find(':');
+            quint32 quit_time = atoi(msg.substr(0, div).c_str());
+            string str_quit = QDateTime::fromSecsSinceEpoch(quit_time).toString().toStdString();
+            msg = msg.substr(div + 1);
+
+            string ratio = msg;
+
+            cur->teacherop->add_record(username, str_enter, str_quit, ratio);
+        }
     }
 }
 
@@ -161,4 +213,36 @@ void TeacherMainPage::on_b_pushprob_clicked()
     // pushprobdialog->setWindowFlag(Qt::WindowStaysOnTopHint);
     pushprobdialog->show();
     connect(this, SIGNAL(answer_got(QString)), pushprobdialog, SLOT(refresh_tables(QString)));
+}
+
+
+
+void TeacherMainPage::grab_send_window()
+{
+    QByteArray data;
+    QBuffer buffer(&data);
+    QPixmap map = screen->grabWindow((WId)this->cur_hwnd);
+    map = map.scaledToWidth(500);
+    map.save(&buffer, "bmp", 20);
+    teacherop->send_vid(data);
+}
+
+void TeacherMainPage::on_b_sharescreen_clicked()
+{
+    this->screen_is_shared = !this->screen_is_shared;
+    if (screen_is_shared) {
+        ui->b_sharescreen->setText("Stop sharing");
+        this->vid_timer->start();
+    } else {
+        ui->b_sharescreen->setText("Share screen");
+        this->vid_timer->stop();
+    }
+}
+
+void TeacherMainPage::on_cb_vidwindow_currentIndexChanged(int index)
+{
+    this->vid_timer->stop();
+    this->cur_hwnd = this->window_title_list[index].second;
+    this->screen_is_shared = false;
+    ui->b_sharescreen->setText("Share screen");
 }

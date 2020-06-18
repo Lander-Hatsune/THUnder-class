@@ -56,6 +56,8 @@ unsigned __stdcall Server::Answer(void* x) {
         Class_Members.push_back(member);
     }
 
+    
+    /*
     printf("check all members:\n");
     for (int i = 0; i < Class_Members.size(); i++) {
         if (Class_Members[i] == nullptr) {
@@ -66,6 +68,11 @@ unsigned __stdcall Server::Answer(void* x) {
             cout << "type: " << *(Class_Members[i]->type_w) << endl;
         }
     }
+    */
+
+    unsigned the_enter_time = time(NULL);
+    unsigned the_attention_bottom = 0;
+    unsigned the_attention_top = 0;
     
     unsigned lastcalled = -1;    
     while (true) {
@@ -156,7 +163,9 @@ unsigned __stdcall Server::Answer(void* x) {
             }
         }
         else if (msghead == VID_MSG) {
+            str = str.substr(4);
             str = str.substr(0, str.length() - 1);
+            printf("received vid %d\n", str.length());
             for (int i = 0; i < Class_Members.size(); i++) {
                 if (Class_Members[i] == nullptr ||
                     the_number == *(Class_Members[i]->number_w))
@@ -180,9 +189,6 @@ unsigned __stdcall Server::Answer(void* x) {
             str = str.substr(4);
             str = str.substr(0, str.length() - 1);
             for (int i = 0; i < Class_Members.size(); i++) {
-                
-                
-                    
                 if (Class_Members[i] == nullptr ||
                     *(Class_Members[i]->type_w) != TEACHER)
                     continue;
@@ -200,7 +206,29 @@ unsigned __stdcall Server::Answer(void* x) {
                 Class_Members[i]->sendmsg(PULL_PROB);
             }
         }
+        else if (msghead == ATTENTION) {
+            the_attention_bottom += 1;
+            str = str.substr(4);
+            if (str[0] == '1') {
+                the_attention_top += 1;
+            }
+        }
     }
+
+    unsigned the_quit_time = time(NULL);
+    for (int i = 0; i < Class_Members.size(); i++) {
+        if (the_type == TEACHER) break;
+        if (Class_Members[i] == nullptr ||
+            *(Class_Members[i]->type_w) != TEACHER)
+            continue;
+        printf("found teacher");
+        string att_data = ATT_DATA + the_username +
+            ":" + to_string(the_enter_time) +
+            ":" + to_string(the_quit_time) +
+            ":" + to_string((double)the_attention_top / the_attention_bottom);
+        Class_Members[i]->sendmsg(att_data);
+    }
+    
     delete member;
     Class_Members[the_number] = nullptr;
     printf("connection %d offline\n", the_number);

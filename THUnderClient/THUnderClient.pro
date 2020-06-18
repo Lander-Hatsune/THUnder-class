@@ -1,5 +1,6 @@
 QT       += core gui
 QT += multimedia widgets
+QT += sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -17,6 +18,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    model/record.cpp \
     view/ansprobwindow.cpp \
     controller/stuop.cpp \
     main.cpp \
@@ -32,9 +34,12 @@ SOURCES += \
     view/stumainpage.cpp \
     view/teachermainpage.cpp \
     view/adminmainpage.cpp \
-    view/loginpage.cpp
+    view/loginpage.cpp \
+    view/recordwindow.cpp
 
 HEADERS += \
+    model/record.h \
+    view/recordwindow.h \
     view/ansprobwindow.h \
     definitions.h \
     model/Socket.h \
@@ -53,6 +58,7 @@ HEADERS += \
     view/loginpage.h
 
 FORMS += \
+    view/recordwindow.ui \
     view/ansprobwindow.ui \
     view/pushprobdialog.ui \
     view/stumainpage.ui \

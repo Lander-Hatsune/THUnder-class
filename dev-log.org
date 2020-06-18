@@ -109,16 +109,16 @@ change the main func a little bit then correct it back
 尝试删除字体，重启qt解决
 ** 在线程函数里不要new widget/dialog
 - emit a signal out.
-* todolist [41%]
+* todolist [100%]
 - [X] 1.1 login, admin
 - [X] 1.2 audio device switching
-- [-] 1.3 screen sharing
+- [X] 1.3 screen sharing
 - [X] 1.4 voice broadcast
 - [X] 1.5 random roll call
-- [-] 1.6 problem pushing
-- [-] 1.7 answer problem
-- [-] 1.8 student sign in & record
-- [-] 1.9 attention check
-- [-] 1.10 save record in file & show record
-- [-] 1.11 ip address
+- [X] 1.6 problem pushing
+- [X] 1.7 answer problem
+- [X] 1.8 student sign in & record
+- [X] 1.9 attention check
+- [X] 1.10 save record in file & show record
+- [X] 1.11 ip address
 - [X] 1.12

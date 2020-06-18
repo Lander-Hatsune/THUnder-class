@@ -11,12 +11,12 @@ StuMainPage::StuMainPage(QWidget *parent, Stuop* stuop) :
 {
     this->stuop = stuop;
     ui->setupUi(this);
-    /*
-    this->timer = new QTimer();
-    this->timer->setInterval(1000);
-    connect(timer, SIGNAL(timeout()), this, SLOT(receive_msg()));
-    timer->start();
-    */
+
+    this->att_timer = new QTimer();
+    this->att_timer->setInterval(1000);
+    connect(att_timer, SIGNAL(timeout()), this, SLOT(send_attention()));
+    att_timer->start();
+
     this->init_window();
     this->init_audio(QAudioDeviceInfo::defaultInputDevice());
     this->is_muted = true;
@@ -87,6 +87,11 @@ void StuMainPage::new_ansprobwindow(QString msg)
     ansprobwindow->show();
 }
 
+void StuMainPage::send_attention()
+{
+    stuop->send_attention(this->isActiveWindow());
+}
+
 void StuMainPage::get_audiodata_sent() {
     QByteArray data = this->m_inputIOdevice->read(1000); // 8000 * 16 * 4 byte/sec, 640 bytes / batch -> 1/800 sec
 
@@ -139,6 +144,17 @@ DWORD WINAPI StuMainPage::receive_msg(LPVOID lpParameter)
         else if (msg_head == PULL_PROB) {
             cur->ansprobwindow->close();
             cout << "close" << endl;
+        }
+        else if (msg_head == VID_MSG) {
+            msg = msg.substr(4);
+            msg = msg.substr(0, msg.length() - 1);
+            printf("received vid %d\n", msg.length());
+            QByteArray data = QByteArray::fromStdString(msg);
+            QImage* img = new QImage();
+            printf("load: %d\n", img->loadFromData(data));
+            QImage image = *img;
+            image = image.scaled(1121, 691);
+            cur->ui->lbl_vid->setPixmap(QPixmap::fromImage(image));
         }
     }
 }

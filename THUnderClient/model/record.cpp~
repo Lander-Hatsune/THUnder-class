@@ -1,0 +1,9 @@
+#include "record.h"
+#include <string>
+using namespace std;
+
+Record(const string&, const string&,
+           const string&, const string&);
+    ~Record();
+    Record(const Record&) = delete;
+    Record& operator = (const Record&) = delete;

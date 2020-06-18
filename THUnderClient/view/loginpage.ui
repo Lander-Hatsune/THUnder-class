@@ -46,7 +46,7 @@
       <x>20</x>
       <y>200</y>
       <width>301</width>
-      <height>101</height>
+      <height>110</height>
      </rect>
     </property>
     <layout class="QFormLayout" name="formLayout">
@@ -69,6 +69,16 @@
      </item>
      <item row="2" column="1">
       <widget class="QLineEdit" name="le_pswd"/>
+     </item>
+     <item row="4" column="1">
+      <widget class="QLineEdit" name="le_ip"/>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="lbl_serverip">
+       <property name="text">
+        <string>Server IP:</string>
+       </property>
+      </widget>
      </item>
     </layout>
    </widget>

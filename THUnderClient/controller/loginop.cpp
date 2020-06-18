@@ -12,9 +12,12 @@ Loginop::Loginop() {
 Loginop::~Loginop() {;}
 
 const QString Loginop::login(const string& username,
-                             const string& pswd) {
+                             const string& pswd,
+                             const string& ip) {
     try {
-        Client* pclt = new Client(username, pswd);
+        Client* pclt = nullptr;
+        if (!ip.empty()) pclt = new Client(username, pswd, ip);
+        else pclt = new Client(username, pswd);
         if (*(pclt->type) == ADMIN) {
             Adminclient* adminclt = new Adminclient(pclt);
             Adminop* adminop = new Adminop(adminclt);
@@ -50,7 +53,7 @@ const QString Loginop::login(const string& username,
         }
     } catch (...) {
         printf("failed to connect to the server\n");
-        Sleep(5000);
+        return "failed to connect to the server";
     }
 
 

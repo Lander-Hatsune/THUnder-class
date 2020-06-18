@@ -13,29 +13,6 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QScrollArea" name="scrollArea">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>961</width>
-     <height>611</height>
-    </rect>
-   </property>
-   <property name="widgetResizable">
-    <bool>true</bool>
-   </property>
-   <widget class="QWidget" name="scrollAreaWidgetContents">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>959</width>
-      <height>609</height>
-     </rect>
-    </property>
-   </widget>
-  </widget>
   <widget class="QComboBox" name="cb_audiodevice">
    <property name="geometry">
     <rect>
@@ -75,6 +52,19 @@
    </property>
    <property name="text">
     <string>You are muted</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lbl_vid">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>30</y>
+     <width>1121</width>
+     <height>691</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string> </string>
    </property>
   </widget>
  </widget>

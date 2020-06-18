@@ -28,5 +28,5 @@ public:
     Loginop(const Loginop&) = delete;
     Loginop& operator = (const Loginop&) = delete;
     
-    const QString login(const string&, const string&);
+    const QString login(const string&, const string&, const string&);
 };

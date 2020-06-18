@@ -29,8 +29,10 @@ void LoginPage::on_b_login_clicked()
 {
     string username = this->ui->le_username->text().toStdString();
     string pswd = this->ui->le_pswd->text().toStdString();
+    string ip = this->ui->le_ip->text().toStdString();
+
     if (username.empty() || pswd.empty()) return;
-    const QString ret = this->loginop->login(username, pswd);
+    QString ret = this->loginop->login(username, pswd, ip);
     if (ret == ":SHUT:") {
         printf("shut\n");
         this->close();

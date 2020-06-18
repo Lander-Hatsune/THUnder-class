@@ -8,4 +8,5 @@ public:
     void send_audiopiece(string&);
     string receive_msg();
     void send_ans(const string&, const unsigned&);
+    void send_attention(bool activated);
 };

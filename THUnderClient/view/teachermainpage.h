@@ -6,6 +6,8 @@
 #include <QAudioOutput>
 #include <QByteArray>
 #include <windows.h>
+#include <QTimer>
+#include <QScreen>
 #include "pushprobdialog.h"
 #include "../controller/teacherop.h"
 
@@ -31,6 +33,11 @@ private slots:
     void get_audiodata_sent();
     void on_b_randcall_clicked();
     void on_b_pushprob_clicked();
+    void grab_send_window();
+
+    void on_b_sharescreen_clicked();
+
+    void on_cb_vidwindow_currentIndexChanged(int index);
 
 private:
     void init_window();
@@ -45,6 +52,14 @@ private:
     QIODevice* m_inputIOdevice;
     QIODevice* m_outputIOdevice;
     static DWORD WINAPI receive_msg(LPVOID lpParameter);
+
+    QTimer* vid_timer;
+    vector<pair<QString, HWND> > window_title_list;
+    HWND cur_hwnd;
+    bool screen_is_shared;
+    QScreen* screen;
 };
+
+
 
 #endif // TEACHERMAINPAGE_H

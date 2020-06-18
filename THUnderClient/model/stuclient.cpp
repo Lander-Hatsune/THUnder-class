@@ -17,6 +17,11 @@ void Stuclient::send_ans(const string& ans, const unsigned& time)
     this->sock.SendLine(ANS_PROB + ans + ":" + to_string(time));
 }
 
+void Stuclient::send_attention(bool activated)
+{
+    this->sock.SendLine(ATTENTION + to_string(activated));
+}
+
 void Stuclient::send_audiopiece(string& audio) {
     //cout << "send: " << AUDIO_MSG + audio << endl;
     cout << "send audio: " << (AUDIO_MSG + audio).length() << endl;
