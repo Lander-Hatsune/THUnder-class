@@ -86,8 +86,8 @@ unsigned __stdcall Server::Answer(void* x) {
         
         if (msghead == ADD_CLIENT) {
             str = str.substr(4);
-            unsigned type = str[str.length()] - '0';
-            str = str.substr(0, str.length() - 1);
+            unsigned type = str[str.length() - 1] - '0';
+            str = str.substr(0, str.length() - 2);
             unsigned divpos = str.rfind(":");
             string username = str.substr(0, divpos);
             string pswd = str.substr(divpos + 1);

@@ -15,8 +15,11 @@ unsigned Adminclient::add_client(const string& username,
     this->sock.SendLine(ADD_CLIENT + username + ":" +
                         pswd + ":" +
                         to_string(type));
-    string fb = this->sock.ReceiveLine();
-    return fb[0] - '0';// 1: username repeated
+    while (true) {
+        string fb = this->sock.ReceiveLine();
+        if (fb.empty()) continue;
+        else return fb[0] - '0';// 1: username repeated
+    }
 }
 
 unsigned Adminclient::del_client(const string& username) {
@@ -24,8 +27,11 @@ unsigned Adminclient::del_client(const string& username) {
         return 1;// user not found
     }
     this->sock.SendLine(DEL_CLIENT + username);
-    string fb = this->sock.ReceiveLine();
-    return fb[0] - '0';// 1: user not found
+    while (true) {
+        string fb = this->sock.ReceiveLine();
+        if (fb.empty()) continue;
+        return fb[0] - '0';// 1: user not found
+    }
 }
 
 unsigned Adminclient::change_username(const string& username,
@@ -36,8 +42,11 @@ unsigned Adminclient::change_username(const string& username,
     }
     this->sock.SendLine(CHANGE_USERNAME +
                         username + ":" + new_username);
-    string fb = this->sock.ReceiveLine();
-    return fb[0] - '0';// 1: user not found, 2: new username exist
+    while (true) {
+        string fb = this->sock.ReceiveLine();
+        if (fb.empty()) continue;
+        return fb[0] - '0';// 1: user not found, 2: new username exist
+    }
 }
 
 unsigned Adminclient::change_pswd(const string& username,
@@ -47,6 +56,9 @@ unsigned Adminclient::change_pswd(const string& username,
         return 2;// illegal username or pswd
     }
     this->sock.SendLine(CHANGE_PSWD + username + ":" + new_pswd);
-    string fb = this->sock.ReceiveLine();
-    return fb[0] - '0';// 1: user not found
+    while (true) {
+        string fb = this->sock.ReceiveLine();
+        if (fb.empty()) continue;
+        return fb[0] - '0';// 1: user not found
+    }
 }

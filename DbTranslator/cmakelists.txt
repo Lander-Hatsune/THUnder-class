@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 2.6)
+project(DbTranslator)
+add_executable(DbTranslator
+    ./dbtranslator.cpp
+    ./sqlite/sqlite3.c
+    ./sqlite/sqlite3.h
+)
+

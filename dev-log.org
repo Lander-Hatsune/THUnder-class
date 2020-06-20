@@ -35,8 +35,13 @@
   - screen sharing
   - push & ans problems
   - sign in & record
-  - All functions done.
+  - All functions done
   - to be optimized
+
+  - optimized.
+- <2020-06-20 ÖÜÁù>
+  - corrected one problem existed in =THUnderClient (Admin mode)=
+  - added assistant project =DbTranslator=
     
 * GUI-Qt
 ** Notebook

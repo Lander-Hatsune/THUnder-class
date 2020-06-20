@@ -1,0 +1,3 @@
+D:/THU/Lessons/1B/Cpp/THUnder/src/DbTranslator/build/CMakeFiles/DbTranslator.dir
+D:/THU/Lessons/1B/Cpp/THUnder/src/DbTranslator/build/CMakeFiles/edit_cache.dir
+D:/THU/Lessons/1B/Cpp/THUnder/src/DbTranslator/build/CMakeFiles/rebuild_cache.dir
