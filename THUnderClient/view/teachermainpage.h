@@ -8,6 +8,13 @@
 #include <windows.h>
 #include <QTimer>
 #include <QScreen>
+#include <string>
+#include <QString>
+#include <QApplication>
+#include <QDesktopWidget>
+#include <QDateTime>
+#include <QBuffer>
+#include <vector>
 #include "pushprobdialog.h"
 #include "../controller/teacherop.h"
 

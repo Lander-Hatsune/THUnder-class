@@ -1,3 +1,9 @@
+/*************************************************************************
+[Filename]               definitions.h
+[Modules & purpose]      some general definitions
+[Developer & date]       ÍõÎÄÐÂ 2020/6
+[Modification log]
+*************************************************************************/
 #pragma once
 #include <string>
 using std::string;

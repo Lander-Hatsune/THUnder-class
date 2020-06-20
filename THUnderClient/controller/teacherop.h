@@ -1,3 +1,9 @@
+/*************************************************************************
+[Filename]               teacherop.h
+[Modules & purpose]      connect TeacherMainPage & Teacherclient
+[Developer & date]       王文新 2020/6
+[Modification log]
+*************************************************************************/
 #pragma once
 #include <QByteArray>
 #include <vector>
@@ -6,10 +12,41 @@
 #include <windows.h>
 #include <QAudioInput>
 #include <QAudioOutput>
-#include <QByteArray>
 #include <QScreen>
+#include <QString>
+#include <QDateTime>
+#include <QTimer>
+#include <QApplication>
+#include <QDesktopWidget>
+#include <QBuffer>
 using namespace std;
 
+/*************************************************************************
+[Class Name]        Teacherop
+[Function]          the controller between TeacherMainPage and Teacherclient
+[Interfaces]        
+- init_audio: initialize audio settings
+- stop_audio: stop recording & sending
+- receive_msg: thread function
+- constructor Teacherop: copy the Stuclient* param
+- deconstructor ~Teacherop:
+- send_audio_piece: pass one piece of audio to Teacherclient
+- switch_audio_device: switch audio device
+- rand_call: start a random roll call
+- end_call: stop the started random roll call
+- send_prob: send the problem
+- pull_prob: force pull the problem, stop receiving answers
+- get_window_title_list: get all the windows' titles into the vector
+- add_record: add a new record
+- get_records: get all records
+- broadcast_start: start audio broadcasting
+- broadcast_end: stop audio broadcasting
+- sharing_start: start screen sharing
+- sharing_stop: stop screen sharing
+- switch_window: switch the shared window
+[Developer & date] 王文新, 2020/5
+[Modification log] 2020/6/20
+*************************************************************************/
 class Teacherop: public QObject {
     Q_OBJECT
 private:

@@ -1,12 +1,7 @@
 #include "loginpage.h"
 #include "./ui_loginpage.h"
-#include <string>
-#include <QString>
 using std::to_string;
 
-// debug
-//#include <iostream>
-#include <cstdio>
 using namespace std;
 
 LoginPage::LoginPage(QWidget *parent)
@@ -34,11 +29,9 @@ void LoginPage::on_b_login_clicked()
     if (username.empty() || pswd.empty()) return;
     QString ret = this->loginop->login(username, pswd, ip);
     if (ret == ":SHUT:") {
-        printf("shut\n");
         this->close();
     }
     else if (ret == ":HIDE:") {
-        printf("hide\n");
         this->hide();
     }
 

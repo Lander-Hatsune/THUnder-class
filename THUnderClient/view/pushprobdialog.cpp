@@ -1,6 +1,5 @@
 #include "pushprobdialog.h"
 #include "ui_pushprobdialog.h"
-#include <iostream>
 using namespace std;
 
 PushProbDialog::PushProbDialog(QWidget *parent, Teacherop* teacherop) :
@@ -10,7 +9,6 @@ PushProbDialog::PushProbDialog(QWidget *parent, Teacherop* teacherop) :
     ui->setupUi(this);
     this->teacherop = teacherop;
     connect(teacherop, SIGNAL(ans_got(QString)), this, SLOT(refresh_tables(QString)));
-    printf("should be connected\n");
 }
 
 PushProbDialog::~PushProbDialog()
@@ -50,7 +48,6 @@ void PushProbDialog::on_b_pull_clicked()
 void PushProbDialog::refresh_tables(QString qmsg)
 {
     string msg = qmsg.toStdString();
-    cout << "refresh msg: " << msg << endl;
     unsigned div = msg.find(':');
     QString username = QString::fromStdString(msg.substr(0, div));
     msg = msg.substr(div + 1);
@@ -72,7 +69,6 @@ void PushProbDialog::refresh_tables(QString qmsg)
             item2->setText(QString::fromStdString(to_string(orinumber)));
         }
     }
-    printf("refreshed table 1\n");
 
     // insert new student to table: result_2
     this->ui->tbl_result_2->insertRow(0);
@@ -82,5 +78,4 @@ void PushProbDialog::refresh_tables(QString qmsg)
     this->ui->tbl_result_2->setItem(0, 1, item2_2);
     QTableWidgetItem* item2_3 = new QTableWidgetItem(time);
     this->ui->tbl_result_2->setItem(0, 2, item2_3);
-    printf("tables all refreshed\n");
 }

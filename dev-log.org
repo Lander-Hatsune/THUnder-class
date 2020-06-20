@@ -45,6 +45,9 @@
 
   - decoupling:
     - half done (teacher mode done, stu mode todo)
+
+    - all done.
+  - annotations done
     
 * GUI-Qt
 ** Notebook

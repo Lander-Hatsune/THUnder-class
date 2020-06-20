@@ -1,6 +1,5 @@
 #include "recordwindow.h"
 #include "ui_recordwindow.h"
-#include <iostream>
 using namespace std;
 
 RecordWindow::RecordWindow(QWidget *parent, vector<Record*> records) :
@@ -24,7 +23,6 @@ RecordWindow::RecordWindow(QWidget *parent, vector<Record*> records) :
         ui->tbl->setItem(0, 2, item3);
         ui->tbl->setItem(0, 3, item4);
     }
-    printf("all set\n");
 }
 
 RecordWindow::~RecordWindow()

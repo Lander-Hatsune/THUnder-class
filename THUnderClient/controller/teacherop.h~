@@ -1,8 +1,0 @@
-#pragma once
-#include "../definitions.h"
-#include "../model/teacherclient.h"
-
-class Teacherop {
-public:
-    
-};

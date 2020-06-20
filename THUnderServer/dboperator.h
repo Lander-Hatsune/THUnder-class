@@ -1,6 +1,9 @@
-/*
-The class 'dboperator' for sqlite database operations on server
- */
+/*************************************************************************
+[Filename]               dboperator.h
+[Modules & purpose]      The class 'dboperator' for sqlite database operations on server
+[Developer & date]       ÍõÎÄÐÂ 2020/6
+[Modification log]
+*************************************************************************/
 
 #pragma once
 #include <string>

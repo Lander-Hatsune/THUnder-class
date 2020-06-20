@@ -2,6 +2,8 @@
 #define LOGINPAGE_H
 
 #include <QMainWindow>
+#include <string>
+#include <QString>
 #include "../controller/loginop.h"
 #include "../controller/adminop.h"
 

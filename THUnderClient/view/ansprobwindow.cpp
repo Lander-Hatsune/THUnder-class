@@ -1,7 +1,5 @@
 #include "ansprobwindow.h"
 #include "ui_ansprobwindow.h"
-#include <QDateTime>
-#include <iostream>
 using namespace std;
 
 AnsProbWindow::AnsProbWindow(QWidget *parent, Stuop* stuop, string msg) :
@@ -17,9 +15,7 @@ AnsProbWindow::AnsProbWindow(QWidget *parent, Stuop* stuop, string msg) :
         unsigned div = msg.find(':');
         prob_msg[i] = msg.substr(0, div);
         msg = msg.substr(div + 1);
-        cout << prob_msg[i] << endl;
     }
-    cout << msg << endl;
     this->ui->tb_prob->setText(QString::fromStdString(prob_msg[0]));
     this->ui->tb_a_2->setText(QString::fromStdString(prob_msg[1]));
     this->ui->tb_b->setText(QString::fromStdString(prob_msg[2]));
@@ -30,7 +26,6 @@ AnsProbWindow::AnsProbWindow(QWidget *parent, Stuop* stuop, string msg) :
                 "The problem has MULTIPLE correct answers!");
     else this->ui->lbl_single_multiple->setText(
                 "The problem has ONE correct answer!");
-    cout << "all set\n";
 
 }
 

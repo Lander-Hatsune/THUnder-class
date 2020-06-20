@@ -1,10 +1,42 @@
+/*************************************************************************
+[Filename]               adminclient.cpp
+[Modules & purpose]      adminclient model
+[Developer & date]       王文新 2020/6
+[Modification log]
+*************************************************************************/
+
 #include "adminclient.h"
+
+/*************************************************************************
+Name:       Adminclient
+Function:   the construct function
+Params:     Client*(input)
+Return val: N/A
+Developer & date: 王文新, 2020/5
+Modification log: None
+*************************************************************************/
 Adminclient::Adminclient(Client* clt): Client(*clt) {
     delete clt;
 }
 
+/*************************************************************************
+Name:       ~Adminclient
+Function:   deconstructor
+Params:     none
+Return val: N/A
+Developer & date: 王文新, 2020/5
+Modification log: None
+*************************************************************************/
 Adminclient::~Adminclient() {;}
 
+/*************************************************************************
+Name:       add_client
+Function:   send the "add" command to server, return the feedback
+Params:     string(input), string(input), CLT_TYPE(input)
+Return val: unsigned: the feedback
+Developer & date: 王文新, 2020/5
+Modification log: None
+*************************************************************************/
 unsigned Adminclient::add_client(const string& username,
                                  const string& pswd,
                                  const CLT_TYPE& type) {
@@ -22,6 +54,14 @@ unsigned Adminclient::add_client(const string& username,
     }
 }
 
+/*************************************************************************
+Name:       del_client
+Function:   send the "delete" command to server, return the feedback
+Params:     string(input)
+Return val: unsigned: feedback
+Developer & date: 王文新, 2020/5
+Modification log: None
+*************************************************************************/
 unsigned Adminclient::del_client(const string& username) {
     if (username.find(':') != -1ull) {
         return 1;// user not found
@@ -34,6 +74,14 @@ unsigned Adminclient::del_client(const string& username) {
     }
 }
 
+/*************************************************************************
+Name:       change_username
+Function:   send the "change username" command to server, return the feedback
+Params:     string(input), string(input)
+Return val: unsigned: feedback
+Developer & date: 王文新, 2020/5
+Modification log: None
+*************************************************************************/
 unsigned Adminclient::change_username(const string& username,
                                       const string& new_username) {
     if (username.find(':') != -1ull ||
@@ -49,6 +97,14 @@ unsigned Adminclient::change_username(const string& username,
     }
 }
 
+/*************************************************************************
+Name:       change_pswd
+Function:   send the "change password" command to server, return the feedback
+Params:     string(input), string(input)
+Return val: unsigned: feedback
+Developer & date: 王文新, 2020/5
+Modification log: None
+*************************************************************************/
 unsigned Adminclient::change_pswd(const string& username,
                                   const string& new_pswd) {
     if (username.find(':') != -1ull ||

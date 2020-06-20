@@ -1,16 +1,45 @@
+/*************************************************************************
+[Filename]               loginop.cpp
+[Modules & purpose]      support login service
+[Developer & date]       王文新 2020/6
+[Modification log]
+*************************************************************************/
+
 #include "loginop.h"
-#include <cstdio>
-#include <string>
 
 using std::to_string;
 using std::string;
-
+/*************************************************************************
+Name:       Loginop
+Function:   construtcor
+Params:     None
+Return val: N/A
+Developer & date: 王文新, 2020/5
+Modification log: None
+*************************************************************************/
 Loginop::Loginop() {
     this->failtime = 0;
 }
 
+/*************************************************************************
+Name:       ~Loginop
+Function:   deconstructor
+Params:     None
+Return val: N/A
+Developer & date: 王文新, 2020/5
+Modification log: None
+*************************************************************************/
 Loginop::~Loginop() {;}
 
+/*************************************************************************
+Name:       login
+Function:   New a client, tryna login and verify the info with the server,
+  return an encoded command to instruct the LoginMainPage's next step
+Params:     username(input), pswd(input), ip(input)
+Return val: const QString, the instruction to switch widget or show alert
+Developer & date: 王文新, 2020/5
+Modification log: None
+*************************************************************************/
 const QString Loginop::login(const string& username,
                              const string& pswd,
                              const string& ip) {
@@ -43,7 +72,6 @@ const QString Loginop::login(const string& username,
             return ":HIDE:";
         }
         else {
-            printf("fail:%d\n", failtime);
             this->failtime += 1;
             delete pclt;
             if (failtime >= 3) return ":SHUT:";
@@ -52,7 +80,6 @@ const QString Loginop::login(const string& username,
                                            " more times to try");
         }
     } catch (...) {
-        printf("failed to connect to the server\n");
         return "failed to connect to the server";
     }
 

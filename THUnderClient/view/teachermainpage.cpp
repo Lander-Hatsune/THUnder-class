@@ -1,16 +1,6 @@
 #include "teachermainpage.h"
 #include "ui_teachermainpage.h"
 #include "recordwindow.h"
-
-#include <string>
-#include <QString>
-#include <QApplication>
-#include <QDesktopWidget>
-#include <QDateTime>
-#include <QBuffer>
-#include <windows.h>
-#include <vector>
-#include <iostream>
 using namespace std;
 
 
@@ -47,7 +37,6 @@ void TeacherMainPage::on_b_togglestate_clicked()
         this->hide();
         vector<Record*> records;
         teacherop->get_records(records);
-        printf("got records %d\n", records.size());
         RecordWindow* recordwindow = new RecordWindow(nullptr, records);
         recordwindow->show();
     }
@@ -94,7 +83,6 @@ void TeacherMainPage::on_b_pushprob_clicked()
 {
     PushProbDialog* pushprobdialog = new PushProbDialog(nullptr, this->teacherop);
     pushprobdialog->setWindowTitle("Push problem (teacher mode (THUnder class))");
-    // pushprobdialog->setWindowFlag(Qt::WindowStaysOnTopHint);
     pushprobdialog->show();
 }
 

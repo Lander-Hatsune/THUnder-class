@@ -2,6 +2,7 @@
 #define ANSPROBWINDOW_H
 
 #include <QWidget>
+#include <QDateTime>
 #include "../controller/stuop.h"
 
 namespace Ui {

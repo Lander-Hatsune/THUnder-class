@@ -1,7 +1,22 @@
+/*************************************************************************
+[Filename]               record.h
+[Modules & purpose]      record struct model
+[Developer & date]       王文新 2020/6
+[Modification log]
+*************************************************************************/
 #pragma once
 #include <string>
 using namespace std;
 
+/*************************************************************************
+[Class Name]        Record
+[Function]          a data structure for Record
+[Interfaces]        
+- constructor Record
+- deconstructor ~Record
+[Developer & date] 王文新, 2020/5
+[Modification log] None
+*************************************************************************/
 class Record {
 public:
     Record(const string&, const string&,

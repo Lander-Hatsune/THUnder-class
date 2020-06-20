@@ -1,8 +1,24 @@
+/*************************************************************************
+[Filename]               user.h
+[Modules & purpose]      the user class
+[Developer & date]       王文新 2020/6
+[Modification log]
+*************************************************************************/
 #pragma once
 #include "./socket/Socket.h"
 #include <string>
 using std::string;
 
+/*************************************************************************
+[Class Name]        User
+[Function]          the user data structure
+[Interfaces]        
+- constructor User
+- deconstructor ~User
+- sendmsg: send message to 'this' user
+[Developer & date] 王文新, 2020/6
+[Modification log] None
+*************************************************************************/
 class User {
 public:
     const string* username_w;

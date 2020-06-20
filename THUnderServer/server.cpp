@@ -1,3 +1,9 @@
+/*************************************************************************
+[Filename]               server.cpp
+[Modules & purpose]      the server class
+[Developer & date]       王文新 2020/6
+[Modification log]
+*************************************************************************/
 #include "server.h"
 #include <process.h>
 #include <string>
@@ -10,18 +16,51 @@ using namespace std;
 
 vector<User*> Class_Members;
 
+/*************************************************************************
+Name:       Server
+Function:   the construct function
+Params:     int(input), int(input)
+Return val: N/A
+Developer & date: 王文新, 2020/6
+Modification log: None
+*************************************************************************/
 Server::Server(int port, int maxnum):
     SocketServer(port, maxnum) {
     ;
 }
+
+/*************************************************************************
+Name:       ~Server
+Function:   the deconstruct function
+Params:     none
+Return val: N/A
+Developer & date: 王文新, 2020/6
+Modification log: None
+*************************************************************************/
 Server::~Server() {;}
 
+/*************************************************************************
+Name:       accept
+Function:   accept a socket connection
+Params:     none
+Return val: void
+Developer & date: 王文新, 2020/6
+Modification log: None
+*************************************************************************/
 void Server::accept() {
     Socket* s = this->Accept();
     unsigned ret;
     _beginthreadex(0, 0, this->Answer, (void*)s, 0, &ret);
 }
 
+/*************************************************************************
+Name:       Answer
+Function:   deal with messages with clients
+Params:     void* x(input)
+Return val: unsigned: (unknown purpose)
+Developer & date: 王文新, 2020/6
+Modification log: None
+*************************************************************************/
 unsigned __stdcall Server::Answer(void* x) {
 
     dboperator db = dboperator();
@@ -55,20 +94,6 @@ unsigned __stdcall Server::Answer(void* x) {
         Class_Members.push_back(member);
     }
 
-    
-    /*
-    printf("check all members:\n");
-    for (int i = 0; i < Class_Members.size(); i++) {
-        if (Class_Members[i] == nullptr) {
-            printf("number %d is offline\n", i);
-        } else {
-            cout << "number: " << *(Class_Members[i]->number_w) << ", ";
-            cout << "username: " << *(Class_Members[i]->username_w) << ", ";
-            cout << "type: " << *(Class_Members[i]->type_w) << endl;
-        }
-    }
-    */
-
     unsigned the_enter_time = time(NULL);
     unsigned the_attention_bottom = 0;
     unsigned the_attention_top = 0;
@@ -80,7 +105,6 @@ unsigned __stdcall Server::Answer(void* x) {
         if (str.empty()) break;
         if (str.length() < 4) continue;
         
-        //str = str.substr(0, str.length() - 1);
         string msghead = str.substr(0, 4);
         cout << msghead << endl;
         
