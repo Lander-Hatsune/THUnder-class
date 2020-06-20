@@ -9,6 +9,8 @@ PushProbDialog::PushProbDialog(QWidget *parent, Teacherop* teacherop) :
 {
     ui->setupUi(this);
     this->teacherop = teacherop;
+    connect(teacherop, SIGNAL(ans_got(QString)), this, SLOT(refresh_tables(QString)));
+    printf("should be connected\n");
 }
 
 PushProbDialog::~PushProbDialog()

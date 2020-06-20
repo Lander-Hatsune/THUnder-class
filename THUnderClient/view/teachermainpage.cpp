@@ -21,29 +21,18 @@ TeacherMainPage::TeacherMainPage(QWidget *parent, Teacherop* teacherop) :
     this->teacherop = teacherop;
     ui->setupUi(this);
     this->init_window();
-    this->init_audio(QAudioDeviceInfo::defaultInputDevice());
     this->is_class_begin = false;
-    CreateThread(nullptr, 0, receive_msg, (LPVOID)this, 0, nullptr);
 
     this->screen_is_shared = false;
-    this->vid_timer = new QTimer();
-    this->vid_timer->setInterval(200);
-    vid_timer->stop();
 
-    connect(this->vid_timer, SIGNAL(timeout()), this, SLOT(grab_send_window()));
-    printf("connect timer\n");
-    this->cur_hwnd = (HWND) QApplication::desktop()->winId();
-    printf("desktop id\n");
-    this->window_title_list.push_back(make_pair("desktop", cur_hwnd));
-    this->screen = QApplication::primaryScreen();
-    printf("initialized\n");
+    this->window_title_list.push_back(make_pair("desktop", this->teacherop->cur_hwnd));
 
+    connect(this->teacherop, SIGNAL(called_username(QString)), this, SLOT(show_called_username(QString)));
 }
 
 TeacherMainPage::~TeacherMainPage()
 {
     delete ui;
-    this->stop_audio();
 }
 
 void TeacherMainPage::on_b_togglestate_clicked()
@@ -51,14 +40,10 @@ void TeacherMainPage::on_b_togglestate_clicked()
     this->is_class_begin = !is_class_begin;
     if (is_class_begin) {
         ui->b_togglestate->setText("Class over");
-        this->m_inputIOdevice = this->m_audioInput->start();
-        connect(m_inputIOdevice, SIGNAL(readyRead()),
-                this, SLOT(get_audiodata_sent()));
-        this->m_outputIOdevice = this->m_audioOutput->start();
+        this->teacherop->broadcast_start();
     } else {
-        this->vid_timer->stop();
-        ui->b_togglestate->setText("Class begin");
-        this->m_audioInput->suspend();
+        this->teacherop->sharing_stop();
+        this->teacherop->broadcast_end();
         this->hide();
         vector<Record*> records;
         teacherop->get_records(records);
@@ -86,101 +71,9 @@ void TeacherMainPage::init_window()
     }
 }
 
-void TeacherMainPage::init_audio(const QAudioDeviceInfo& deviceInfo)
-{
-    QAudioFormat format;
-    format.setSampleRate(8000);
-    format.setChannelCount(1);
-    format.setSampleSize(16);
-    format.setSampleType(QAudioFormat::SignedInt);
-    format.setByteOrder(QAudioFormat::LittleEndian);
-    format.setCodec("audio/pcm");
-
-    if (!deviceInfo.isFormatSupported(format)) {
-        cout << "Default format not supported - trying to use nearest";
-        format = deviceInfo.nearestFormat(format);
-    }
-
-    cout << "tryna set audio input and output" << endl;
-    this->m_audioInput.reset(new QAudioInput(deviceInfo, format));
-    this->m_audioOutput.reset(new QAudioOutput(deviceInfo, format));
-    cout << "input and output set" << endl;
-    this->m_outputIOdevice = this->m_audioOutput->start();
-}
-
-void TeacherMainPage::stop_audio()
-{
-    this->m_audioInput->stop();
-    this->m_audioOutput->stop();
-}
-
-
-
 void TeacherMainPage::on_cb_audiodevice_currentIndexChanged(int index)
 {
-    this->m_audioInput->stop();
-    this->m_audioInput->disconnect(this);
-
-    this->init_audio(ui->cb_audiodevice->itemData(index).value<QAudioDeviceInfo>());
-}
-
-void TeacherMainPage::get_audiodata_sent() {
-    QByteArray data = this->m_inputIOdevice->read(1000);
-    string data_str = data.toStdString();
-    cout << "write " << data_str.length() << endl;
-    this->teacherop->send_audiopiece(data_str);
-}
-
-DWORD WINAPI TeacherMainPage::receive_msg(LPVOID lpParameter)
-{
-    TeacherMainPage* cur = (TeacherMainPage*) lpParameter;
-    while (true) {
-        string msg = cur->teacherop->receive_msg();
-        if (msg.empty() || msg.length() < 4) continue;
-        string msg_head = msg.substr(0, 4);
-        cout << "received msg, " << msg.length() << ", " << msg_head << endl;
-        if (msg_head == AUDIO_MSG) {
-            cout << "audio message!" << endl;
-            msg = msg.substr(4);
-            printf("sliced\n");
-            QByteArray audio_piece = QByteArray::fromStdString(msg);
-            printf("converted\n");
-            cur->m_outputIOdevice->write(audio_piece);
-            printf("played\n");
-        }
-        else if (msg_head == CALLED_USERNAME) {
-            msg = msg.substr(4);
-            QString show_called_username = QString::fromStdString("Called: " + msg);
-            cur->ui->lbl_called->setText(show_called_username);
-        }
-        else if (msg_head == ANS_PROB) {
-            msg = msg.substr(4);
-            printf("got answer, emit\n");
-            cout << msg << endl;
-            emit cur->answer_got(QString::fromStdString(msg));
-        }
-        else if (msg_head == ATT_DATA) {
-            msg = msg.substr(4);
-
-            unsigned div = msg.find(':');
-            string username = msg.substr(0, div);
-            msg = msg.substr(div + 1);
-
-            div = msg.find(':');
-            quint32 enter_time = atoi(msg.substr(0, div).c_str());
-            string str_enter = QDateTime::fromSecsSinceEpoch(enter_time).toString().toStdString();
-            msg = msg.substr(div + 1);
-
-            div = msg.find(':');
-            quint32 quit_time = atoi(msg.substr(0, div).c_str());
-            string str_quit = QDateTime::fromSecsSinceEpoch(quit_time).toString().toStdString();
-            msg = msg.substr(div + 1);
-
-            string ratio = msg;
-
-            cur->teacherop->add_record(username, str_enter, str_quit, ratio);
-        }
-    }
+    this->teacherop->switch_audio(ui->cb_audiodevice->itemData(index).value<QAudioDeviceInfo>());
 }
 
 void TeacherMainPage::on_b_randcall_clicked()
@@ -203,19 +96,6 @@ void TeacherMainPage::on_b_pushprob_clicked()
     pushprobdialog->setWindowTitle("Push problem (teacher mode (THUnder class))");
     // pushprobdialog->setWindowFlag(Qt::WindowStaysOnTopHint);
     pushprobdialog->show();
-    connect(this, SIGNAL(answer_got(QString)), pushprobdialog, SLOT(refresh_tables(QString)));
-}
-
-
-
-void TeacherMainPage::grab_send_window()
-{
-    QByteArray data;
-    QBuffer buffer(&data);
-    QPixmap map = screen->grabWindow((WId)this->cur_hwnd);
-    map = map.scaledToWidth(500);
-    map.save(&buffer, "jpg", 10);
-    teacherop->send_vid(data);
 }
 
 void TeacherMainPage::on_b_sharescreen_clicked()
@@ -223,17 +103,21 @@ void TeacherMainPage::on_b_sharescreen_clicked()
     this->screen_is_shared = !this->screen_is_shared;
     if (screen_is_shared) {
         ui->b_sharescreen->setText("Stop sharing");
-        this->vid_timer->start();
+        this->teacherop->sharing_start();
     } else {
         ui->b_sharescreen->setText("Share screen");
-        this->vid_timer->stop();
+        this->teacherop->sharing_stop();
     }
 }
 
 void TeacherMainPage::on_cb_vidwindow_currentIndexChanged(int index)
 {
-    this->vid_timer->stop();
-    this->cur_hwnd = this->window_title_list[index].second;
+    this->teacherop->switch_window(this->window_title_list[index].second);
     this->screen_is_shared = false;
     ui->b_sharescreen->setText("Share screen");
+}
+
+void TeacherMainPage::show_called_username(QString show_called_username)
+{
+    this->ui->lbl_called->setText(show_called_username);
 }

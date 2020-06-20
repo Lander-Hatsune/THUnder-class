@@ -42,6 +42,9 @@
 - <2020-06-20 ÖÜÁù>
   - corrected one problem existed in =THUnderClient (Admin mode)=
   - added assistant project =DbTranslator=
+
+  - decoupling:
+    - half done (teacher mode done, stu mode todo)
     
 * GUI-Qt
 ** Notebook

@@ -72,4 +72,4 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 LIBS += -lws2_32
-#CONFIG += console thread
+CONFIG += console thread

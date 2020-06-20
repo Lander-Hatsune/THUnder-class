@@ -24,7 +24,6 @@ private slots:
 private:
     Ui::PushProbDialog *ui;
     Teacherop* teacherop;
-    static DWORD WINAPI receive_msg(LPVOID lpParameter);
 };
 
 #endif // PUSHPROBDIALOG_H
