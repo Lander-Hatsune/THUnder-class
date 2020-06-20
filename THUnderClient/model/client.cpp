@@ -60,6 +60,12 @@ Modification log: None
 *************************************************************************/
 void Client::checktype() {
     sock.SendLine(":CT:" + this->username + ":" + this->pswd);
-    string fb = sock.ReceiveLine();
-    this->_type = fb[0] - '0';
+    unsigned asktimes = 1;
+    while (asktimes++) {
+        if (asktimes > 3e3) throw "failed to connect";
+        string fb = sock.ReceiveLine();
+        if (fb.empty()) continue;
+        this->_type = fb[0] - '0';
+        break;
+    }
 }

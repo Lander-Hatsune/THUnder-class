@@ -48,8 +48,6 @@
 
     - all done.
   - annotations done
-- <2020-06-21 ÖÜÈÕ 0:50>
-  - fixed a potential error in =Client::checktype=
     
 * GUI-Qt
 ** Notebook
