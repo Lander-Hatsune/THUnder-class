@@ -6,7 +6,8 @@
 - login
 - checktype: 
   - qt grab info, send to server
-  - server check the database info, checktype, add stu and teacher, and their number, into vector, teacher first.
+  - server check the database info, checktype, add stu and teacher, 
+    and their number, into vector, teacher first.
   - server send the result type
   - qt respond in gui
 - audio:
