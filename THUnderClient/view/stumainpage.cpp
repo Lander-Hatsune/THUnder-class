@@ -14,6 +14,8 @@ StuMainPage::StuMainPage(QWidget *parent, Stuop* stuop) :
     connect(stuop, SIGNAL(is_muted(bool)), this, SLOT(is_muted_text(bool)));
     connect(stuop, SIGNAL(new_frame(QByteArray)), this, SLOT(show_frame(QByteArray)));
     connect(stuop, SIGNAL(get_attention(bool*)), this, SLOT(get_attention(bool*)));
+    connect(stuop, SIGNAL(class_over()), this, SLOT(class_over()));
+    this->ansprobwindow = nullptr;
 }
 
 StuMainPage::~StuMainPage()
@@ -61,7 +63,8 @@ void StuMainPage::is_muted_text(bool is_muted)
 
 void StuMainPage::prob_pulled()
 {
-    ansprobwindow->close();
+    if (ansprobwindow)
+        ansprobwindow->close();
 }
 
 void StuMainPage::show_frame(QByteArray data)
@@ -71,6 +74,11 @@ void StuMainPage::show_frame(QByteArray data)
     QImage image = *img;
     image = image.scaled(1121, 691);
     ui->lbl_vid->setPixmap(QPixmap::fromImage(image));
+}
+
+void StuMainPage::class_over()
+{
+    this->close();
 }
 
 

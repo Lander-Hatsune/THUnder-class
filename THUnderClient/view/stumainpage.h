@@ -33,6 +33,7 @@ private slots:
     void is_muted_text(bool);
     void prob_pulled();
     void show_frame(QByteArray);
+    void class_over();
 
 private:
     void init_window();

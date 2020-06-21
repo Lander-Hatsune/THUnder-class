@@ -41,3 +41,4 @@ const string PULL_PROB = ":PL:";
 const string ATTENTION = ":TA:";
 const string ATT_DATA = ":TD:";
 
+const string CLASS_OVER = ":OV:";

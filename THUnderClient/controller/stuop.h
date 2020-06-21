@@ -51,6 +51,7 @@ signals:
     void pullprob();
     void new_frame(QByteArray);
     void get_attention(bool*);
+    void class_over();
 
 private slots:
     void get_audiodata_sent();

@@ -383,3 +383,16 @@ void Teacherop::switch_window(HWND hwnd)
     this->vid_timer->stop();
     this->cur_hwnd = hwnd;
 }
+
+/*************************************************************************
+Name:       classover
+Function:   classover
+Params:     none
+Return val: void
+Developer & date: ÍõÎÄÐÂ, 2020/6
+Modification log: None
+*************************************************************************/
+void Teacherop::class_over()
+{
+    this->teacherclient->class_over();
+}

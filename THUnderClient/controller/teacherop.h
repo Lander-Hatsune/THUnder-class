@@ -96,4 +96,6 @@ public:
     void sharing_start();
     void sharing_stop();
     void switch_window(HWND hwnd);
+
+    void class_over();
 };

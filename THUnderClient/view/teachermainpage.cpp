@@ -32,9 +32,11 @@ void TeacherMainPage::on_b_togglestate_clicked()
         ui->b_togglestate->setText("Class over");
         this->teacherop->broadcast_start();
     } else {
+        teacherop->class_over();
         this->teacherop->sharing_stop();
         this->teacherop->broadcast_end();
         this->hide();
+        Sleep(2000);
         vector<Record*> records;
         teacherop->get_records(records);
         RecordWindow* recordwindow = new RecordWindow(nullptr, records);

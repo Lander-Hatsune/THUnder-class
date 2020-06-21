@@ -232,6 +232,15 @@ unsigned __stdcall Server::Answer(void* x) {
                 the_attention_top += 1;
             }
         }
+        else if (msghead == CLASS_OVER) {
+            printf("class is over\n");
+            for (int i = 0; i < Class_Members.size(); i++) {
+                if (Class_Members[i] == nullptr ||
+                    *(Class_Members[i]->type_w) != STU)
+                    continue;
+                Class_Members[i]->sendmsg(CLASS_OVER);
+            }
+        }
     }
 
     unsigned the_quit_time = time(NULL);

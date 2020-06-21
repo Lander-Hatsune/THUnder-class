@@ -165,3 +165,16 @@ void Teacherclient::add_record(const string& username, const string& start_time,
     Record* rec = new Record(username, start_time, quit_time, att_ratio);
     this->records.push_back(rec);
 }
+
+/*************************************************************************
+Name:       class_over
+Function:   classover
+Params:     none
+Return val: void
+Developer & date: ÍõÎÄÐÂ, 2020/6
+Modification log: None
+*************************************************************************/
+void Teacherclient::class_over()
+{
+    this->sock.SendLine(CLASS_OVER);
+}

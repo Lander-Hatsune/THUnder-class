@@ -45,6 +45,7 @@ public:
     void send_vid(string&);
     void add_record(const string&, const string&,
                     const string&, const string&);
+    void class_over();
 protected:
     vector<Record*> records;
     friend class Teacherop;

@@ -194,5 +194,8 @@ DWORD WINAPI Stuop::receive_msg(LPVOID lpParameter)
             QByteArray data = QByteArray::fromStdString(msg);
             emit cur->new_frame(data);
         }
+        else if (msg_head == CLASS_OVER) {
+            emit cur->class_over();
+        }
     }
 }

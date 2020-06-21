@@ -50,6 +50,9 @@
   - annotations done
 - <2020-06-21 周日 0:50>
   - fixed a potential error in =Client::checktype=
+- <2020-06-21 周日 14:26>
+  - fixed a potential error in =StuMainPage::pull_prob=
+  - fixed the problem that non-offline students' records wouldn't be showed
     
 * GUI-Qt
 ** Notebook
@@ -141,3 +144,6 @@ change the main func a little bit then correct it back
 - [X] 1.10 save record in file & show record
 - [X] 1.11 ip address
 - [X] 1.12
+- [X] shut all stu before =Class over=
+- [X] ansprob: what if a stu logged in halfway, missed the problem push, 
+and didn't have the ansprobwindow? check whether the window pointer is valid.
