@@ -88,6 +88,7 @@ unsigned __stdcall Server::Answer(void* x) {
     printf("new member, type %d, or %d\n", the_type, *(member->type_w));
     if (the_type == 0) {
         delete member;
+        return 0;
     }
     else if (the_type != 1) {
         printf("pushed into vector\n");

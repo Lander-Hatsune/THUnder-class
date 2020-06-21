@@ -54,6 +54,8 @@
 - <2020-06-21 周日 14:26>
   - fixed a potential error in =StuMainPage::pull_prob=
   - fixed the problem that non-offline students' records wouldn't be showed
+- <2020-06-21 周日 18:57>
+  - fixed problem that server exceptionally exit if password isn't right
     
 * GUI-Qt
 ** Notebook

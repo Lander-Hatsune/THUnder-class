@@ -6,16 +6,6 @@
 
 #IncludeRegexTransform: 
 
-D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/dboperator.cpp
-dboperator.h
-D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/dboperator.h
-cstdio
--
-cstring
--
-cstdlib
--
-
 D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/dboperator.h
 string
 -
@@ -26,24 +16,6 @@ D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/definitions.h
 
 D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/definitions.h
 string
--
-
-D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/main.cpp
-server.h
-D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/server.h
-definitions.h
-D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/definitions.h
-iostream
--
-cstdio
--
-string
--
-process.h
--
-vector
--
-iostream
 -
 
 D:/THU/Lessons/1B/Cpp/THUnder/src/THUnderServer/server.cpp
