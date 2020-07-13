@@ -86,6 +86,7 @@ unsigned __stdcall Server::Answer(void* x) {
     User* member = new User(the_username, the_pswd,
                             the_type, the_number, the_sock);
     printf("new member, type %d, or %d\n", the_type, *(member->type_w));
+
     if (the_type == 0) {
         delete member;
         return 0;
@@ -243,23 +244,27 @@ unsigned __stdcall Server::Answer(void* x) {
             }
         }
     }
-
-    unsigned the_quit_time = time(NULL);
-    for (int i = 0; i < Class_Members.size(); i++) {
-        if (the_type == TEACHER) break;
-        if (Class_Members[i] == nullptr ||
-            *(Class_Members[i]->type_w) != TEACHER)
-            continue;
-        printf("found teacher");
-        string att_data = ATT_DATA + the_username +
-            ":" + to_string(the_enter_time) +
-            ":" + to_string(the_quit_time) +
-            ":" + to_string((double)the_attention_top / the_attention_bottom);
-        Class_Members[i]->sendmsg(att_data);
+    printf("broke\n");
+    if (the_type == STU) {
+        unsigned the_quit_time = time(NULL);
+        for (int i = 0; i < Class_Members.size(); i++) {
+            if (the_type == TEACHER) break;
+            if (Class_Members[i] == nullptr ||
+                *(Class_Members[i]->type_w) != TEACHER)
+                continue;
+            printf("found teacher");
+            string att_data = ATT_DATA + the_username +
+                ":" + to_string(the_enter_time) +
+                ":" + to_string(the_quit_time) +
+                ":" + to_string((double)the_attention_top / the_attention_bottom);
+            Class_Members[i]->sendmsg(att_data);
+        }
     }
     
     delete member;
-    Class_Members[the_number] = nullptr;
+    if (the_type != ADMIN) {
+        Class_Members[the_number] = nullptr;
+    }
     printf("connection %d offline\n", the_number);
     Sleep(10);    
 }

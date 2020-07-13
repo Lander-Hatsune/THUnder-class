@@ -51,7 +51,6 @@ int main(void) {
             printf("successfully translated\n");
         } else printf("failed to translate\n");
     }
-    
     sqlite3_close(db);
     return 0;
 }
